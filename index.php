@@ -7,6 +7,6 @@
     <title>Document</title>
   </head>
   <body>
-    <a href="views/admin/">Admin Page</a>
+    <a href="views/admin/">Pergi Admin Page</a>
   </body>
 </html>
