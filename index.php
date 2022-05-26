@@ -8,5 +8,7 @@
   </head>
   <body>
     <a href="views/admin/">Pergi Admin Page</a>
+    <br>
+    <a href="views/user/">Pergi User Page</a>
   </body>
 </html>
