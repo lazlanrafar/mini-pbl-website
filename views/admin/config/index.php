@@ -13,3 +13,5 @@ function query($query) {
 	}
 	return $rows;
 }
+
+require 'petugas.php';
