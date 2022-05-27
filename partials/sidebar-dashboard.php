@@ -30,15 +30,15 @@
       id="main-menu-navigation"
       data-menu="menu-navigation"
     >
-      <li class="nav-item">
-        <a href="index.php"
+      <li class="nav-item active">
+        <a href="dashboard.php"
           ><i class="feather icon-home"></i
           ><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a
         >
       </li>
-      <li class="navigation-header"><span>Laporan</span></li>
-      <li class="nav-item active">
-        <a href="pengukuran-tanah.php"
+      <li class="navigation-header"><span>Pengajuan</span></li>
+      <li class="nav-item">
+        <a href="pengajuan-pengukuran.php"
           ><i class="feather icon-clipboard"></i
           ><span class="menu-title" data-i18n="Pengukuran"
             >Pengukuran Tanah</span
@@ -46,16 +46,9 @@
         >
       </li>
       <li class="nav-item">
-        <a href="dokumen-sk.php"
+        <a href="pengajuan-sertifikat.php"
           ><i class="feather icon-book"></i
-          ><span class="menu-title" data-i18n="DokumenSK">Dokumen SK</span></a
-        >
-      </li>
-      <li class="navigation-header"><span>Petugas</span></li>
-      <li class="nav-item">
-        <a href="petugas.php"
-          ><i class="feather icon-user"></i
-          ><span class="menu-title" data-i18n="Petugas">Petugas</span></a
+          ><span class="menu-title" data-i18n="Sertifikat Tanah">Sertifikat Tanah</span></a
         >
       </li>
     </ul>

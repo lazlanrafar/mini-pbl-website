@@ -8,7 +8,7 @@
     data-col="2-columns"
   >
     <?php require 'partials/navbar.php' ?>
-    <?php require 'partials/sidebar-pengukuran-tanah.php' ?>
+    <?php require 'partials/sidebar-pengukuran.php' ?>
 
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -17,9 +17,8 @@
       <div class="content-wrapper">
         <div class="content-header row"></div>
         <div class="content-body">
-          <!-- Dashboard Ecommerce Starts -->
-          <section id="dashboard-ecommerce"></section>
-          <!-- Dashboard Ecommerce ends -->
+          
+        
         </div>
       </div>
     </div>

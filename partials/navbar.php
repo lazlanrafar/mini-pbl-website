@@ -177,7 +177,7 @@
               <span
                 ><img
                   class="round"
-                  src="../../app-assets/images/portrait/small/avatar-s-11.jpg"
+                  src="app-assets/images/portrait/small/avatar-s-11.jpg"
                   alt="avatar"
                   height="40"
                   width="40"
