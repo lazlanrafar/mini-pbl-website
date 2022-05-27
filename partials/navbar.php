@@ -184,7 +184,7 @@
               /></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="auth-login.html"
+              <a class="dropdown-item" href="auth-logout.php"
                 ><i class="feather icon-power"></i> Logout</a
               >
             </div>

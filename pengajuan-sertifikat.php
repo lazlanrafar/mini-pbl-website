@@ -1,3 +1,5 @@
+<?php require 'partials/session.php' ?>
+
 <!DOCTYPE html>
 <html class="loading" lang="en">
   <?php require 'partials/head.php' ?>

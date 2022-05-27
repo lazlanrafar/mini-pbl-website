@@ -30,7 +30,7 @@ if( isset($_POST["login"]) ) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");    
 
 	// cek email
 	if( mysqli_num_rows($result) === 1 ) {
@@ -79,8 +79,8 @@ if( isset($_POST["login"]) ) {
         <div class="content-header row"></div>
         <div class="content-body">
         <?php if( isset($error) ) : ?>
-	<p style="color: red; font-style: italic;">username / password salah</p>
-<?php endif; ?>
+            <p style="color: red; font-style: italic;">username / password salah</p>
+        <?php endif; ?>
           <section class="row flexbox-container">
             <div class="col-xl-8 col-11 d-flex justify-content-center">
               <div class="card bg-authentication rounded-0 mb-0">
