@@ -1,3 +1,7 @@
+<?php
+$username = query("SELECT * FROM user WHERE id = '$_SESSION[userId]'")[0]['nama'];
+
+?>
 <nav
   class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow"
 >
@@ -171,7 +175,7 @@
               data-toggle="dropdown"
             >
               <div class="user-nav d-sm-flex d-none">
-                <span class="user-name text-bold-600">John Doe</span
+                <span class="user-name text-bold-600"><?php echo $username ?></span
                 ><span class="user-status">Available</span>
               </div>
               <span

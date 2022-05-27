@@ -1,4 +1,9 @@
-<?php require 'partials/session.php' ?>
+<?php 
+require 'partials/session.php';
+require 'config/dashboard.php';
+
+
+?>
 
 <!DOCTYPE html>
 <html class="loading" lang="en">
@@ -19,7 +24,7 @@
       <div class="content-wrapper">
         <div class="content-header row"></div>
         <div class="content-body">
-          <?php echo $_COOKIE['id']; ?>
+          
 
         </div>
       </div>
