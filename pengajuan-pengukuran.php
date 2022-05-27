@@ -56,6 +56,7 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                             <th>SHGB</th>
                             <th>IMB</th>
                             <th>SPPT SBB</th>
+                            <th>Petugas</th>
                             <th>Ukuran Tanah</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -81,10 +82,19 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                             <td>
                               <a href="docs/<?= $data["sppt_sbb"]; ?>" target="_BLANK">Download</a>
                             </td>
+                            <td><?= $data["id_petugas"]; ?></td>
                             <td><?= $data["ukuran_tanah"]; ?></td>
-                            <td><?= $data["status"]; ?></td>
                             <td>
+                            <?php if($data['status'] == "Selesai") { ?>
+                              <span class="badge badge-success"><?= $data["status"]; ?></span>
+                            <?php } else { ?>
+                              <span class="badge badge-warning"><?= $data["status"]; ?></span>
+                            <?php } ?>
+                            </td>
+                            <td>
+                              <?php if($data['status'] != "Selesai") { ?>
                               <a href="pengajuan-pengukuran-hapus.php?id=<?= $data["id"]; ?>" onclick="return confirm('yakin?');" class="btn btn-danger">Batal</a>
+                              <?php } ?>
                             </td>
                           </tr>
                           <?php $i++; ?>

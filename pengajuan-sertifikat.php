@@ -28,7 +28,7 @@ require 'config/pengajuan-sertifikat.php' ;
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Basic Tables</h4>
+                  <h4 class="card-title">Pengajuan Sertifikat Tanah</h4>
                 </div>
                 <div class="card-content">
                   <div class="card-body">
@@ -38,11 +38,13 @@ require 'config/pengajuan-sertifikat.php' ;
                       can use any example of below table for your table and it
                       can be use with any type of bootstrap tables.
                     </p>
-                    <p>
-                      <span class="text-bold-600">Example 1:</span> Table with
-                      outer spacing
-                    </p>
-                    <!-- Table with outer spacing -->
+                    <div class="d-flex my-2 justify-content-end">
+                      <a
+                        href="pengajuan-pengukuran-tambah.php"
+                        class="btn btn-primary"
+                        ><i class="fa fa-plus"></i> Ajukan</a
+                      >
+                    </div>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
@@ -75,44 +77,6 @@ require 'config/pengajuan-sertifikat.php' ;
                         </tbody>
                       </table>
                     </div>
-                  </div>
-                  <p class="px-2">
-                    <span class="text-bold-600">Example 2:</span> Minimal Table
-                    with no outer spacing.
-                  </p>
-
-                  <!-- Table with no outer spacing -->
-                  <div class="table-responsive">
-                    <table class="table mb-0">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Name</th>
-                          <th>Email</th>
-                          <th>User ID</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Leanne Graham</td>
-                          <td>sincere@april.biz</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Ervin Howell</td>
-                          <td>shanna@melissa.tv</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Clementine Bauch</td>
-                          <td>nathan@yesenia.net</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
