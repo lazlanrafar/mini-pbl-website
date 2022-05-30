@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2022 at 11:22 AM
+-- Generation Time: May 30, 2022 at 03:43 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.14
 
@@ -31,24 +31,26 @@ CREATE TABLE `pengajuan_sk` (
   `id` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `id_petugas` int(11) DEFAULT NULL,
+  `id_admin` int(11) NOT NULL,
   `provinsi` varchar(30) NOT NULL,
   `kecamatan` varchar(30) NOT NULL,
   `kota` varchar(30) NOT NULL,
   `alamat_lengkap` varchar(200) NOT NULL,
   `shgb` varchar(30) NOT NULL,
   `imb` varchar(30) NOT NULL,
-  `sppt_sbb` varchar(30) NOT NULL,
-  `ukuran_tanah` varchar(20) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `sppt_pbb` varchar(30) NOT NULL,
+  `biaya` varchar(25) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `updated_at` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pengajuan_sk`
 --
 
-INSERT INTO `pengajuan_sk` (`id`, `id_user`, `id_petugas`, `provinsi`, `kecamatan`, `kota`, `alamat_lengkap`, `shgb`, `imb`, `sppt_sbb`, `ukuran_tanah`, `status`) VALUES
-(11, 2, 1, 'Jawa Tengah', 'Kramat', 'Tegal', 'Kertayasa rt5/6', '629090f753e7a.docx', '629090f75418a.pdf', '629090f754448.pdf', '20 x 50 M', 'Selesai'),
-(12, 2, NULL, 'Kepulauan Riau', 'Citra', 'Batam Centre', 'Indomaret Greenland', '62909647d123d.jpg', '62909647d2108.png', '62909647d23ab.pdf', '', 'Menunggu Konfirmasi');
+INSERT INTO `pengajuan_sk` (`id`, `id_user`, `id_petugas`, `id_admin`, `provinsi`, `kecamatan`, `kota`, `alamat_lengkap`, `shgb`, `imb`, `sppt_pbb`, `biaya`, `status`, `updated_at`) VALUES
+(11, 2, 1, 0, 'Jawa Tengah', 'Kramat', 'Tegal', 'Kertayasa rt5/6', '629090f753e7a.docx', '629090f75418a.pdf', '629090f754448.pdf', '', 'Selesai', ''),
+(12, 2, NULL, 0, 'Kepulauan Riau', 'Citra', 'Batam Centre', 'Indomaret Greenland', '62909647d123d.jpg', '62909647d2108.png', '62909647d23ab.pdf', '', 'Menunggu Konfirmasi', '');
 
 -- --------------------------------------------------------
 
@@ -77,26 +79,28 @@ INSERT INTO `petugas` (`id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `email`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `riwayat_sk`
+-- Table structure for table `sertifikat_tanah`
 --
 
-CREATE TABLE `riwayat_sk` (
+CREATE TABLE `sertifikat_tanah` (
   `id` int(11) NOT NULL,
   `id_pengajuan` int(11) NOT NULL,
-  `message` varchar(255) NOT NULL
+  `biaya` varchar(100) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sk_tanah`
+-- Table structure for table `ukuran_tanah`
 --
 
-CREATE TABLE `sk_tanah` (
+CREATE TABLE `ukuran_tanah` (
   `id` int(11) NOT NULL,
   `id_pengajuan` int(11) NOT NULL,
-  `biaya` varchar(100) NOT NULL,
-  `status` varchar(50) NOT NULL
+  `dokumen_pl` varchar(25) NOT NULL,
+  `ukuran_tanah` varchar(25) NOT NULL,
+  `tanggal_pengukuran` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -145,16 +149,16 @@ ALTER TABLE `petugas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `riwayat_sk`
+-- Indexes for table `sertifikat_tanah`
 --
-ALTER TABLE `riwayat_sk`
+ALTER TABLE `sertifikat_tanah`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_pengajuan` (`id_pengajuan`);
 
 --
--- Indexes for table `sk_tanah`
+-- Indexes for table `ukuran_tanah`
 --
-ALTER TABLE `sk_tanah`
+ALTER TABLE `ukuran_tanah`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_pengajuan` (`id_pengajuan`);
 
@@ -181,15 +185,15 @@ ALTER TABLE `petugas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `riwayat_sk`
+-- AUTO_INCREMENT for table `sertifikat_tanah`
 --
-ALTER TABLE `riwayat_sk`
+ALTER TABLE `sertifikat_tanah`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sk_tanah`
+-- AUTO_INCREMENT for table `ukuran_tanah`
 --
-ALTER TABLE `sk_tanah`
+ALTER TABLE `ukuran_tanah`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -210,16 +214,16 @@ ALTER TABLE `pengajuan_sk`
   ADD CONSTRAINT `pengajuan_sk_ibfk_2` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id`);
 
 --
--- Constraints for table `riwayat_sk`
+-- Constraints for table `sertifikat_tanah`
 --
-ALTER TABLE `riwayat_sk`
-  ADD CONSTRAINT `riwayat_sk_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_sk` (`id`);
+ALTER TABLE `sertifikat_tanah`
+  ADD CONSTRAINT `sertifikat_tanah_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_sk` (`id`);
 
 --
--- Constraints for table `sk_tanah`
+-- Constraints for table `ukuran_tanah`
 --
-ALTER TABLE `sk_tanah`
-  ADD CONSTRAINT `sk_tanah_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_sk` (`id`);
+ALTER TABLE `ukuran_tanah`
+  ADD CONSTRAINT `ukuran_tanah_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_sk` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
