@@ -2,7 +2,7 @@
 require 'index.php';
 
 $reports = query("SELECT 
-sertifikat_tanah.id, sertifikat_tanah.status, sertifikat_tanah.sertifikat_tanah, 
+sertifikat_tanah.id, sertifikat_tanah.status, sertifikat_tanah.bukti_pembayaran ,
 pengajuan_sk.provinsi, pengajuan_sk.kota, pengajuan_sk.kecamatan, pengajuan_sk.alamat_lengkap,
 pengajuan_sk.biaya,
 ukuran_tanah.ukuran_tanah, ukuran_tanah.dokumen_pl
@@ -10,20 +10,19 @@ FROM sertifikat_tanah
 JOIN pengajuan_sk 
 ON sertifikat_tanah.id_pengajuan = pengajuan_sk.id 
 JOIN ukuran_tanah
-ON ukuran_tanah.id_pengajuan = pengajuan_sk.id
-WHERE pengajuan_sk.id_user = '$_SESSION[userId]'");
+ON ukuran_tanah.id_pengajuan = pengajuan_sk.id");
 
 
-function uploadBuktiPembayaran($data){
+function uploadSertifikatTanah($data){
     global $conn;
     $id = htmlspecialchars($data["id"]);
-    $bukti_pembayaran = upload("bukti_pembayaran");
+    $sertifikat_tanah = upload("sertifikat_tanah");
 
-    if( !$bukti_pembayaran ) {
+    if( !$sertifikat_tanah ) {
         return false;
     }
-    mysqli_query($conn, "UPDATE sertifikat_tanah SET bukti_pembayaran = '$bukti_pembayaran' WHERE id = $id");
-    mysqli_query($conn, "UPDATE sertifikat_tanah SET status = 'Menunggu Konfirmasi' WHERE id = $id");
+    mysqli_query($conn, "UPDATE sertifikat_tanah SET sertifikat_tanah = '$sertifikat_tanah' WHERE id = $id");
+    mysqli_query($conn, "UPDATE sertifikat_tanah SET status = 'Selesai' WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
 

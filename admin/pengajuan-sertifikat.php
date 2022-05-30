@@ -1,6 +1,6 @@
 <?php 
 require '../partials/session-admin.php';
-require '../config/pengajuan-sertifikat.php' ;
+require '../config/admin-pengajuan-sertifikat.php' ;
 
 
 ?>
@@ -32,48 +32,44 @@ require '../config/pengajuan-sertifikat.php' ;
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <p class="card-text">
-                      Using the most basic table Leanne Grahamup, here’s how
-                      <code>.table</code>-based tables look in Bootstrap. You
-                      can use any example of below table for your table and it
-                      can be use with any type of bootstrap tables.
-                    </p>
-                    <div class="d-flex my-2 justify-content-end">
-                      <a
-                        href="pengajuan-pengukuran-tambah.php"
-                        class="btn btn-primary"
-                        ><i class="fa fa-plus"></i> Ajukan</a
-                      >
-                    </div>
+            
                     <div class="table-responsive">
-                      <table class="table">
+                    <table class="table">
                         <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>User ID</th>
+                            <th>No</th>
+                            <th>Alamat</th>
+                            <th>Dokumen PL</th>
+                            <th>Luas</th>
+                            <th>Harga</th>
+                            <th>Status</th>
+                            <th>Bukti Pembayaran</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $i = 1; ?>
+                          <?php foreach ($reports as $data) : ?>
                           <tr>
                             <th scope="row">1</th>
-                            <td>Leanne Graham</td>
-                            <td>sincere@april.biz</td>
-                            <td>@mdo</td>
+                            <td><?= $data['provinsi'] ?>, <?= $data['kota'] ?>, <?= $data['kecamatan'] ?>, <?= $data['alamat_lengkap'] ?></td>
+                            <td>
+                              <a href="../docs/<?= $data['dokumen_pl'] ?>" target="_BLANK">Download</a>
+                            </td>
+                            <td><?= $data['ukuran_tanah'] ?></td>
+                            <td><?= $data['biaya'] ?></td>
+                            <td><?= $data['status'] ?></td>
+                            <td>
+                              <a href="../docs/<?= $data['bukti_pembayaran'] ?>" target="_BLANK">Download</a>
+                            </td>
+                            <td>
+                              <?php if($data['status'] == "Menunggu Konfirmasi"){ ?>
+                              <a href="pengajuan-sertifikat-upload.php?id=<?=$data['id'] ?>" class="btn btn-primary">Konfirmasi</a>
+                              <?php } ?>
+                            </td>
                           </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Ervin Howell</td>
-                            <td>shanna@melissa.tv</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Clementine Bauch</td>
-                            <td>nathan@yesenia.net</td>
-                            <td>@twitter</td>
-                          </tr>
+                          <?php $i++; ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>

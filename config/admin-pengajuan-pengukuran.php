@@ -47,7 +47,7 @@ function setUkuranTanah($data){
 	mysqli_query($conn, "UPDATE pengajuan_sk SET status = 'Selesai' WHERE id = $id_pengajuan");
 	mysqli_query($conn, "UPDATE pengajuan_sk SET biaya = $total WHERE id = $id_pengajuan");
 
-	mysqli_query($conn, "INSERT INTO sertifikat_tanah (`id`, `id_pengajuan`, `status`) VALUES (NULL, '$id_pengajuan', 'Menunggu Pembayaran')");
+	mysqli_query($conn, "INSERT INTO sertifikat_tanah (`id`, `id_pengajuan`, `bukti_pembayaran`,`sertifikat_tanah`, `status`) VALUES (NULL, '$id_pengajuan','','', 'Menunggu Pembayaran')");
 	return mysqli_affected_rows($conn);
 }
 
