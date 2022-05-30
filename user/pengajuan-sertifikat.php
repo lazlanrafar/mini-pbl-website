@@ -55,14 +55,20 @@ require '../config/pengajuan-sertifikat.php' ;
                           <?php $i = 1; ?>
                           <?php foreach ($reports as $data) : ?>
                           <tr>
-                            <th scope="row">1</th>
+                            <th scope="row"><?= $i ?></th>
                             <td><?= $data['provinsi'] ?>, <?= $data['kota'] ?>, <?= $data['kecamatan'] ?>, <?= $data['alamat_lengkap'] ?></td>
                             <td>
                               <a href="../docs/<?= $data['dokumen_pl'] ?>" target="_BLANK">Download</a>
                             </td>
                             <td><?= $data['ukuran_tanah'] ?></td>
                             <td><?= $data['biaya'] ?></td>
-                            <td><?= $data['status'] ?></td>
+                            <td>
+                              <?php if($data['status'] == "Selesai") : ?>
+                              <span class="badge badge-success"><?= $data['status'] ?></span>
+                              <?php else : ?>
+                              <span class="badge badge-warning"><?= $data['status'] ?></span>
+                              <?php endif; ?>
+                            </td>
                             <td>
                               <?php if($data['status'] == "Menunggu Pembayaran"){ ?>
                               <a href="pengajuan-sertifikat-bayar.php?id=<?=$data['id'] ?>" class="btn btn-primary">Bayar</a>

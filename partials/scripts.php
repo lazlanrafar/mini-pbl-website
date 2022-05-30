@@ -3,8 +3,7 @@
 <!-- BEGIN Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->
-<script src="../app-assets/vendors/js/extensions/dropzone.min.js"></script>
-<script src="../app-assets/vendors/js/ui/prism.min.js"></script>
+<script src="../app-assets/vendors/js/charts/echarts/echarts.min.js"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -14,5 +13,5 @@
 <!-- END: Theme JS-->
 
 <!-- BEGIN: Page JS-->
-<script src="../app-assets/js/scripts/extensions/dropzone.js"></script>
+<script src="../app-assets/js/scripts/charts/chart-echart.js"></script>
 <!-- END: Page JS-->

@@ -58,13 +58,22 @@ require '../config/admin-pengajuan-sertifikat.php' ;
                             </td>
                             <td><?= $data['ukuran_tanah'] ?></td>
                             <td><?= $data['biaya'] ?></td>
-                            <td><?= $data['status'] ?></td>
+                            <td>
+                              <?php if($data['status'] == "Selesai") : ?>
+                              <span class="badge badge-success"><?= $data['status'] ?></span>
+                              <?php else : ?>
+                              <span class="badge badge-warning"><?= $data['status'] ?></span>
+                              <?php endif; ?>
+                            </td>
                             <td>
                               <a href="../docs/<?= $data['bukti_pembayaran'] ?>" target="_BLANK">Download</a>
                             </td>
                             <td>
                               <?php if($data['status'] == "Menunggu Konfirmasi"){ ?>
                               <a href="pengajuan-sertifikat-upload.php?id=<?=$data['id'] ?>" class="btn btn-primary">Konfirmasi</a>
+                              <?php } ?>
+                              <?php if($data['status'] == "Selesai"){ ?>
+                              <a href="../docs/<?=$data['sertifikat_tanah'] ?>" target="_BLANK" class="">Download Sertifikat</a>
                               <?php } ?>
                             </td>
                           </tr>

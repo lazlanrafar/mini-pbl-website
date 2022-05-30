@@ -2,7 +2,7 @@
 require 'index.php';
 
 $reports = query("SELECT 
-sertifikat_tanah.id, sertifikat_tanah.status, sertifikat_tanah.bukti_pembayaran ,
+sertifikat_tanah.id, sertifikat_tanah.status, sertifikat_tanah.bukti_pembayaran,sertifikat_tanah.sertifikat_tanah ,
 pengajuan_sk.provinsi, pengajuan_sk.kota, pengajuan_sk.kecamatan, pengajuan_sk.alamat_lengkap,
 pengajuan_sk.biaya,
 ukuran_tanah.ukuran_tanah, ukuran_tanah.dokumen_pl

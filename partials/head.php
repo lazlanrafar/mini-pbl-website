@@ -29,8 +29,6 @@
     type="text/css"
     href="../app-assets/vendors/css/vendors.min.css"
   />
-  <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/ui/prism.min.css">
-  <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/file-uploaders/dropzone.min.css">
   <!-- END: Vendor CSS-->
 
   <!-- BEGIN: Theme CSS-->
@@ -53,6 +51,7 @@
     href="../app-assets/css/themes/semi-dark-layout.css"
   />
 
+
   <!-- BEGIN: Page CSS-->
   <link
     rel="stylesheet"
@@ -64,6 +63,5 @@
     type="text/css"
     href="../app-assets/css/core/colors/palette-gradient.css"
   />
-  <link rel="stylesheet" type="text/css" href="../app-assets/css/plugins/file-uploaders/dropzone.css">
   <!-- END: Page CSS-->
 </head>
