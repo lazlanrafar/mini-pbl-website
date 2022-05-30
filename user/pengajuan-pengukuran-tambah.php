@@ -1,6 +1,6 @@
 <?php 
-require 'partials/session.php';
-require 'config/pengajuan-pengukuran.php';
+require '../partials/session.php';
+require '../config/pengajuan-pengukuran.php';
 
 $dataUser = query("SELECT * FROM user WHERE id = '$_SESSION[userId]'")[0];
 
@@ -27,15 +27,15 @@ if( isset($_POST["submit"]) ) {
 
 <!DOCTYPE html>
 <html class="loading" lang="en">
-  <?php require 'partials/head.php' ?>
+  <?php require '../partials/head.php' ?>
   <body
     class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static"
     data-open="click"
     data-menu="vertical-menu-modern"
     data-col="2-columns"
   >
-    <?php require 'partials/navbar.php' ?>
-    <?php require 'partials/sidebar-pengukuran.php' ?>
+    <?php require '../partials/navbar.php' ?>
+    <?php require '../partials/sidebar-user-pengukuran.php' ?>
 
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -217,13 +217,13 @@ if( isset($_POST["submit"]) ) {
                           <div class="form-label-group mb-2">
                             <input
                               type="file"
-                              id="sppt_sbb"
+                              id="sppt_pbb"
                               class="form-control"
-                              name="sppt_sbb"
+                              name="sppt_pbb"
                               placeholder="SPPT SBB -  Surat Keputusan dari Kantor Pelayanan Pajak (KPP)"
                               required
                             />
-                            <label for="sppt_sbb"
+                            <label for="sppt_pbb"
                               >SPPT SBB - Surat Keputusan dari Kantor Pelayanan
                               Pajak (KPP)</label
                             >
@@ -249,7 +249,7 @@ if( isset($_POST["submit"]) ) {
       </div>
     </div>
 
-    <?php require 'partials/footer.php' ?>
-    <?php require 'partials/scripts.php' ?>
+    <?php require '../partials/footer.php' ?>
+    <?php require '../partials/scripts.php' ?>
   </body>
 </html>

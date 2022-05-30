@@ -20,7 +20,11 @@ if( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
 }
 
 if( isset($_SESSION["login"]) ) {
-	header("Location: dashboard.php");
+	if( $_SESSION["isAdmin"] == 1 ) {
+    header("Location: admin/dashboard.php");
+  }else{
+    header("Location: user/dashboard.php");
+  }
 	exit;
 }
 
@@ -40,6 +44,7 @@ if( isset($_POST["login"]) ) {
 		if( password_verify($password, $row["password"]) ) {
 			// set session
 			$_SESSION["login"] = true;
+			$_SESSION["isAdmin"] = $row['is_admin'];
 			$_SESSION["userId"] = $row['id'];
 
 			// cek remember me
@@ -49,7 +54,11 @@ if( isset($_POST["login"]) ) {
 				setcookie('key', hash('sha256', $row['email']), time()+60);
 			}
 
-			header("Location: dashboard.php");
+			if( $row["is_admin"] == 1 ) {
+        header("Location: admin/dashboard.php");
+      }else{
+        header("Location: user/dashboard.php");
+      }
 			exit;
 		}
 	}
@@ -62,7 +71,7 @@ if( isset($_POST["login"]) ) {
 
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-  <?php require 'partials/head.php' ?>
+  <?php require 'auth-head.php' ?>
 
   <!-- BEGIN: Body-->
 
@@ -166,6 +175,6 @@ if( isset($_POST["login"]) ) {
       </div>
     </div>
 
-    <?php require 'partials/scripts.php' ?>
+    <?php require 'auth-scripts.php' ?>
   </body>
 </html>

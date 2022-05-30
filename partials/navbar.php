@@ -181,14 +181,14 @@ $username = query("SELECT * FROM user WHERE id = '$_SESSION[userId]'")[0]['nama'
               <span
                 ><img
                   class="round"
-                  src="app-assets/images/portrait/small/avatar-s-11.jpg"
+                  src="../app-assets/images/portrait/small/avatar-s-11.jpg"
                   alt="avatar"
                   height="40"
                   width="40"
               /></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="auth-logout.php"
+              <a class="dropdown-item" href="../auth-logout.php"
                 ><i class="feather icon-power"></i> Logout</a
               >
             </div>

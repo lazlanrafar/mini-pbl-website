@@ -18,7 +18,7 @@ if( isset($_POST["register"]) ) {
 
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-  <?php require 'partials/head.php' ?>
+  <?php require 'auth-head.php' ?>
 
   <!-- BEGIN: Body-->
 
@@ -179,7 +179,7 @@ if( isset($_POST["register"]) ) {
         </div>
       </div>
     </div>
-    <?php require 'partials/scripts.php' ?>
+    <?php require 'auth-scripts.php' ?>
   </body>
   <!-- END: Body-->
 </html>

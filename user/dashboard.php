@@ -1,21 +1,21 @@
 <?php 
-require 'partials/session.php';
-require 'config/dashboard.php';
+require '../partials/session.php';
+require '../config/dashboard.php';
 
 
 ?>
 
 <!DOCTYPE html>
 <html class="loading" lang="en">
-  <?php require 'partials/head.php' ?>
+  <?php require '../partials/head.php' ?>
   <body
     class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static"
     data-open="click"
     data-menu="vertical-menu-modern"
     data-col="2-columns"
   >
-    <?php require 'partials/navbar.php' ?>
-    <?php require 'partials/sidebar-dashboard.php' ?>
+    <?php require '../partials/navbar.php' ?>
+    <?php require '../partials/sidebar-user-dashboard.php' ?>
 
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -30,7 +30,7 @@ require 'config/dashboard.php';
       </div>
     </div>
 
-    <?php require 'partials/footer.php' ?>
-    <?php require 'partials/scripts.php' ?>
+    <?php require '../partials/footer.php' ?>
+    <?php require '../partials/scripts.php' ?>
   </body>
 </html>

@@ -1,21 +1,21 @@
 <?php 
-require 'partials/session.php';
-require 'config/pengajuan-pengukuran.php';
+require '../partials/session.php';
+require '../config/pengajuan-pengukuran.php';
 
 $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SESSION[userId]'");
 ?>
 
 <!DOCTYPE html>
 <html class="loading" lang="en">
-  <?php require 'partials/head.php' ?>
+  <?php require '../partials/head.php' ?>
   <body
     class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static"
     data-open="click"
     data-menu="vertical-menu-modern"
     data-col="2-columns"
   >
-    <?php require 'partials/navbar.php' ?>
-    <?php require 'partials/sidebar-pengukuran.php' ?>
+    <?php require '../partials/navbar.php' ?>
+    <?php require '../partials/sidebar-user-pengukuran.php' ?>
 
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -55,11 +55,9 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                             <th>Alamat Lengkap</th>
                             <th>SHGB</th>
                             <th>IMB</th>
-                            <th>SPPT SBB</th>
+                            <th>SPPT PBB</th>
                             <th>Petugas</th>
-                            <th>Ukuran Tanah</th>
                             <th>Status</th>
-                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -80,10 +78,9 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                               <a href="docs/<?= $data["imb"]; ?>" target="_BLANK">Download</a>
                             </td>
                             <td>
-                              <a href="docs/<?= $data["sppt_sbb"]; ?>" target="_BLANK">Download</a>
+                              <a href="docs/<?= $data["sppt_pbb"]; ?>" target="_BLANK">Download</a>
                             </td>
                             <td><?= $data["id_petugas"]; ?></td>
-                            <td><?= $data["ukuran_tanah"]; ?></td>
                             <td>
                             <?php if($data['status'] == "Selesai") { ?>
                               <span class="badge badge-success"><?= $data["status"]; ?></span>
@@ -91,11 +88,7 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                               <span class="badge badge-warning"><?= $data["status"]; ?></span>
                             <?php } ?>
                             </td>
-                            <td>
-                              <?php if($data['status'] != "Selesai") { ?>
-                              <a href="pengajuan-pengukuran-hapus.php?id=<?= $data["id"]; ?>" onclick="return confirm('yakin?');" class="btn btn-danger">Batal</a>
-                              <?php } ?>
-                            </td>
+                      
                           </tr>
                           <?php $i++; ?>
                           <?php endforeach; ?>
@@ -111,7 +104,7 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
       </div>
     </div>
 
-    <?php require 'partials/footer.php' ?>
-    <?php require 'partials/scripts.php' ?>
+    <?php require '../partials/footer.php' ?>
+    <?php require '../partials/scripts.php' ?>
   </body>
 </html>
