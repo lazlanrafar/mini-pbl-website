@@ -2,6 +2,11 @@
 require '../partials/session-admin.php';
 require '../config/admin-pengajuan-pengukuran.php';
 
+if(isset($_GET['datatidakvalid'])){
+  setStatusDataTidakValid($_GET['datatidakvalid']);
+  header("Location: pengajuan-pengukuran.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -70,25 +75,32 @@ require '../config/admin-pengajuan-pengukuran.php';
                             <td>
                             <?php if($data['status'] == "Selesai") { ?>
                               <span class="badge badge-success"><?= $data["status"]; ?></span>
-                            <?php } else { ?>
+                            <?php } else if($data['status'] == "Data Tidak Valid") { ?>
+                              <span class="badge badge-danger"><?= $data["status"]; ?></span>
+                            <?php } else {  ?>
                               <span class="badge badge-warning"><?= $data["status"]; ?></span>
-                            <?php } ?>
+                            <?php }  ?>
                             </td>
                             <td>
                               <?php if($data['status'] != "Selesai") { ?>
+                              <?php if($data['status'] != "Data Tidak Valid") { ?>
                               <div class="btn-group dropleft">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Action
                                 </button>
                                 <div class="dropdown-menu">
                                     <?php if($data['status'] == "Menunggu Konfirmasi") { ?>
-                                      <a class="dropdown-item" href="#">Tentukan Petugas</a>
+                                      <a class="dropdown-item" href="pengajuan-pengukuran-tentukan-petugas.php?id=<?= $data['id'] ?>">Tentukan Petugas</a>
+                                      
                                     <?php } ?>
-                                    <a class="dropdown-item" href="#">Masukan Luas Tanah</a>
-                                    <a class="dropdown-item text-danger font-weight-bold" href="#">Data tidak Valid</a>
+                                    <?php if($data['status'] == "Petugas Telah Ditentukan") { ?>
+                                      <a class="dropdown-item" href="#">Masukan Luas Tanah</a>
+                                    <?php } ?>
+                                    <a class="dropdown-item text-danger font-weight-bold" href="pengajuan-pengukuran.php?datatidakvalid=<?= $data['id'] ?>">Data tidak Valid</a>
                                 </div>
-                              </div>
-                              <?php } ?>
+                            </div>
+                            <?php } ?>
+                            <?php } ?>
                             </td>
                       
                           </tr>
