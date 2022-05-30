@@ -94,7 +94,7 @@ if(isset($_GET['datatidakvalid'])){
                                       
                                     <?php } ?>
                                     <?php if($data['status'] == "Petugas Telah Ditentukan") { ?>
-                                      <a class="dropdown-item" href="#">Masukan Luas Tanah</a>
+                                      <a class="dropdown-item" href="pengajuan-pengukuran-masukan-luas-tanah.php?id=<?= $data['id'] ?>">Masukan Luas Tanah</a>
                                     <?php } ?>
                                     <a class="dropdown-item text-danger font-weight-bold" href="pengajuan-pengukuran.php?datatidakvalid=<?= $data['id'] ?>">Data tidak Valid</a>
                                 </div>
