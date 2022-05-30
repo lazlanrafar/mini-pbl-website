@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2022 at 09:03 AM
+-- Generation Time: May 30, 2022 at 06:15 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.14
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -74,7 +74,15 @@ CREATE TABLE `petugas` (
 
 INSERT INTO `petugas` (`id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `email`, `telepon`, `alamat`) VALUES
 (1, 'udin', 'tegal', '2022-05-04', 'udin@gmail.com', '0865-6565-6511', 'Batam Centre, Jl. Ahmad Yani, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29461'),
-(4, 'Kisanak', 'Batam', '2022-05-18', 'kisanak@gmail.com', '08519874542', 'Batam');
+(4, 'Kisanak', 'Batam', '2022-05-18', 'kisanak@gmail.com', '08519874542', 'Batam'),
+(5, 'Steven', 'Batam', '2001-06-24', 'Stevenbar@gmail.com', '087769874522', 'Pondok Cemara Jl. Sudirman no. 50'),
+(6, 'Drew', 'Pulau Nipa', '2002-05-24', 'drewtagart@gmail.com', '081377965248', 'Jl. Pohon Tandus gang 9 no. 20'),
+(7, 'Manda', 'Aceh, Panton La', '2002-07-19', 'mandaaoda@gmail.com', '084624446588', 'Tanjung Rana, Jl. Ujung no. 31'),
+(8, 'Yoga', 'Batam', '2001-04-05', 'yogasmk1@gmail.com', '089643158794', 'Tiban McDermott blok G no. 9'),
+(9, 'Rehan', 'Batam', '2001-12-12', 'rehanhaq@gmail.com', '085978861425', 'Taman Duta indah blok J no. 45'),
+(10, 'Tasya Killa', 'Batam', '1999-11-06', 'tasyakilla@gmail.com', '08634595782', 'Bengkong laut, Jl. Garuda no 44'),
+(11, 'Abil Faunal', 'Batam', '2001-07-08', 'abilfaunal@gmail.com', '0845632158947', 'Tiban 3 blok V no. 57\r\n'),
+(12, 'Gunawan Septian', 'Batam', '2000-09-29', 'gunawanseptian@gmail.com', '089799654128', 'Pondok Selaras blok H no. 19');
 
 -- --------------------------------------------------------
 
@@ -145,7 +153,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `nama`, `password`, `tempat_lahir`, `tanggal_lahir`, `no_ktp`, `email`, `telepon`, `alamat`, `is_admin`) VALUES
 (2, 'user', '$2y$10$QQdSjHGezozwZ48Z6mlcUeMl1AycAgQfF/oWlXvOCUFK7OjWfd95a', 'batam', '2022-05-10', 2147483647, 'user@gmail.com', '085161316855', 'btam', 0),
-(3, 'admin', '$2y$10$3AOdseb53RYuXJUxlgBRhuhoZBd4z9129TRN/aEvfmirKbbHBRujW', 'admin', '2022-05-11', 2147483647, 'admin@gmail.com', '0851546545454', 'batam', 1);
+(3, 'admin', '$2y$10$3AOdseb53RYuXJUxlgBRhuhoZBd4z9129TRN/aEvfmirKbbHBRujW', 'admin', '2022-05-11', 2147483647, 'admin@gmail.com', '0851546545454', 'batam', 1),
+(4, 'Mahmet Topan', '$2y$10$Tj3iH1qgG3QIWBsipzKc/u8DObla9dAgo7f4Tg3BXSAoZkbDIQV2.', 'Cilacap', '1999-02-05', 2147483647, 'mahmettopan23@gmail.com', '081364673820', 'Tiban Indah Permai blok K no. 20', 0);
 
 --
 -- Indexes for dumped tables
@@ -199,7 +208,7 @@ ALTER TABLE `pengajuan_sk`
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `sertifikat_tanah`
@@ -217,7 +226,7 @@ ALTER TABLE `ukuran_tanah`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
