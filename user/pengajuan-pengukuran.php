@@ -72,13 +72,13 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                               <?= $data["alamat_lengkap"]; ?>
                             </td>
                             <td>
-                              <a href="docs/<?= $data["shgb"]; ?>" target="_BLANK">Download</a>
+                              <a href="../docs/<?= $data["shgb"]; ?>" target="_BLANK">Download</a>
                             </td>
                             <td>
-                              <a href="docs/<?= $data["imb"]; ?>" target="_BLANK">Download</a>
+                              <a href="../docs/<?= $data["imb"]; ?>" target="_BLANK">Download</a>
                             </td>
                             <td>
-                              <a href="docs/<?= $data["sppt_pbb"]; ?>" target="_BLANK">Download</a>
+                              <a href="../docs/<?= $data["sppt_pbb"]; ?>" target="_BLANK">Download</a>
                             </td>
                             <td><?= $data["id_petugas"]; ?></td>
                             <td>
