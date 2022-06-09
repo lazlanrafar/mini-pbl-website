@@ -152,6 +152,7 @@ if( isset($_POST["register"]) ) {
                                 class="form-control"
                                 cols="5"
                                 rows="3"
+                                required
                               ></textarea>
                               <label for="alamat">Alamat Lengkap</label>
                             </div>

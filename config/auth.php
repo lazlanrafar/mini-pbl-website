@@ -26,8 +26,8 @@ function registrasi($data) {
 	// enkripsi password
 	$password = password_hash($password, PASSWORD_DEFAULT);
 
-	// tambahkan userbaru ke database
-	mysqli_query($conn, "INSERT INTO user VALUES('', '$nama', '$password', '$tempat_lahir', '$tanggal_lahir', '$no_ktp', '$email', '$telepon', '$alamat', 'false')");
+	$query = "INSERT INTO `user`(`id`, `role`, `nama`, `tempat_lahir`, `tanggal_lahir`, `no_ktp`, `email`, `password`, `telepon`, `alamat`) VALUES ('','user','$nama','$tempat_lahir','$tanggal_lahir','$no_ktp','$email','$password','$telepon','$alamat')";
+	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
 

@@ -20,10 +20,10 @@ if( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
 }
 
 if( isset($_SESSION["login"]) ) {
-	if( $_SESSION["isAdmin"] == 1 ) {
-    header("Location: admin/dashboard.php");
-  }else{
+	if( $_SESSION["role"] == "user" ) {
     header("Location: user/dashboard.php");
+  }else{
+    header("Location: admin/dashboard.php");
   }
 	exit;
 }
@@ -44,17 +44,10 @@ if( isset($_POST["login"]) ) {
 		if( password_verify($password, $row["password"]) ) {
 			// set session
 			$_SESSION["login"] = true;
-			$_SESSION["isAdmin"] = $row['is_admin'];
+			$_SESSION["role"] = $row['role'];
 			$_SESSION["userId"] = $row['id'];
 
-			// cek remember me
-			if( isset($_POST['remember']) ) {
-				// buat cookie
-				setcookie('id', $row['id'], time()+60);
-				setcookie('key', hash('sha256', $row['email']), time()+60);
-			}
-
-			if( $row["is_admin"] == 1 ) {
+			if( $row["role"] == "user" ) {
         header("Location: admin/dashboard.php");
       }else{
         header("Location: user/dashboard.php");
@@ -88,9 +81,7 @@ if( isset($_POST["login"]) ) {
       <div class="content-wrapper">
         <div class="content-header row"></div>
         <div class="content-body">
-        <?php if( isset($error) ) : ?>
-            <p style="color: red; font-style: italic;">username / password salah</p>
-        <?php endif; ?>
+        
           <section class="row flexbox-container">
             <div class="col-xl-8 col-11 d-flex justify-content-center">
               <div class="card bg-authentication rounded-0 mb-0">
@@ -149,6 +140,10 @@ if( isset($_POST["login"]) ) {
                               </div>
                               <label for="user-password">Password</label>
                             </fieldset>
+
+                            <?php if( isset($error) ) : ?>
+                                <p style="color: red; font-style: italic;">username / password salah</p>
+                            <?php endif; ?>
 
                             <a
                               href="auth-register.php"
