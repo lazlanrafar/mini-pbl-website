@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2022 at 06:15 PM
+-- Generation Time: Jun 09, 2022 at 11:24 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.0.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,65 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengajuan_sk`
+-- Table structure for table `pengajuan_ukur_tanah`
 --
 
-CREATE TABLE `pengajuan_sk` (
+CREATE TABLE `pengajuan_ukur_tanah` (
   `id` int(11) NOT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `id_petugas` int(11) DEFAULT NULL,
-  `id_admin` int(11) DEFAULT NULL,
-  `provinsi` varchar(30) NOT NULL,
-  `kecamatan` varchar(30) NOT NULL,
-  `kota` varchar(30) NOT NULL,
-  `alamat_lengkap` varchar(200) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `shgb` varchar(30) NOT NULL,
   `imb` varchar(30) NOT NULL,
   `sppt_pbb` varchar(30) NOT NULL,
-  `biaya` varchar(25) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `updated_at` varchar(30) NOT NULL
+  `provinsi` varchar(15) NOT NULL,
+  `kota` varchar(15) NOT NULL,
+  `kecamatan` varchar(15) NOT NULL,
+  `alamat_lengkap` varchar(100) NOT NULL,
+  `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengajuan_sk`
+-- Dumping data for table `pengajuan_ukur_tanah`
 --
 
-INSERT INTO `pengajuan_sk` (`id`, `id_user`, `id_petugas`, `id_admin`, `provinsi`, `kecamatan`, `kota`, `alamat_lengkap`, `shgb`, `imb`, `sppt_pbb`, `biaya`, `status`, `updated_at`) VALUES
-(14, 2, 4, NULL, 'Kepulauan Riau', 'Bengkong', 'Bengkong', 'Bengkong', '62944f6e73e1e.jpeg', '62944f6e74570.jpeg', '62944f6e7484f.jpeg', '990002.94', 'Selesai', ''),
-(15, 2, 1, NULL, 'Kepulauan Riau', 'Batam Centre', 'Batam Centre', 'Perumahan Citra Batam, No2.4', '629468d6a6b65.docx', '629468d6a6e78.docx', '629468d6a7178.docx', '990220.5', 'Selesai', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `petugas`
---
-
-CREATE TABLE `petugas` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(30) NOT NULL,
-  `tempat_lahir` varchar(15) NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `telepon` varchar(15) NOT NULL,
-  `alamat` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `petugas`
---
-
-INSERT INTO `petugas` (`id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `email`, `telepon`, `alamat`) VALUES
-(1, 'udin', 'tegal', '2022-05-04', 'udin@gmail.com', '0865-6565-6511', 'Batam Centre, Jl. Ahmad Yani, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29461'),
-(4, 'Kisanak', 'Batam', '2022-05-18', 'kisanak@gmail.com', '08519874542', 'Batam'),
-(5, 'Steven', 'Batam', '2001-06-24', 'Stevenbar@gmail.com', '087769874522', 'Pondok Cemara Jl. Sudirman no. 50'),
-(6, 'Drew', 'Pulau Nipa', '2002-05-24', 'drewtagart@gmail.com', '081377965248', 'Jl. Pohon Tandus gang 9 no. 20'),
-(7, 'Manda', 'Aceh, Panton La', '2002-07-19', 'mandaaoda@gmail.com', '084624446588', 'Tanjung Rana, Jl. Ujung no. 31'),
-(8, 'Yoga', 'Batam', '2001-04-05', 'yogasmk1@gmail.com', '089643158794', 'Tiban McDermott blok G no. 9'),
-(9, 'Rehan', 'Batam', '2001-12-12', 'rehanhaq@gmail.com', '085978861425', 'Taman Duta indah blok J no. 45'),
-(10, 'Tasya Killa', 'Batam', '1999-11-06', 'tasyakilla@gmail.com', '08634595782', 'Bengkong laut, Jl. Garuda no 44'),
-(11, 'Abil Faunal', 'Batam', '2001-07-08', 'abilfaunal@gmail.com', '0845632158947', 'Tiban 3 blok V no. 57\r\n'),
-(12, 'Gunawan Septian', 'Batam', '2000-09-29', 'gunawanseptian@gmail.com', '089799654128', 'Pondok Selaras blok H no. 19');
+INSERT INTO `pengajuan_ukur_tanah` (`id`, `id_user`, `shgb`, `imb`, `sppt_pbb`, `provinsi`, `kota`, `kecamatan`, `alamat_lengkap`, `status`) VALUES
+(2, 5, '62a1a7c0cc074.pdf', '62a1a7c0cc36e.pdf', '62a1a7c0cc60f.pdf', 'Kepulauan Riau', 'Batam Centre', 'Batam Centre', 'Perumahan Citra Batam', 'Menunggu Jadwal Ukur');
 
 -- --------------------------------------------------------
 
@@ -93,18 +56,11 @@ INSERT INTO `petugas` (`id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `email`, `
 CREATE TABLE `sertifikat_tanah` (
   `id` int(11) NOT NULL,
   `id_pengajuan` int(11) NOT NULL,
-  `bukti_pembayaran` varchar(100) NOT NULL,
-  `sertifikat_tanah` varchar(100) NOT NULL,
-  `status` varchar(50) NOT NULL
+  `biaya` varchar(30) NOT NULL,
+  `bukti_pembayaran` varchar(30) NOT NULL,
+  `sertifikat_tanah` varchar(30) NOT NULL,
+  `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sertifikat_tanah`
---
-
-INSERT INTO `sertifikat_tanah` (`id`, `id_pengajuan`, `bukti_pembayaran`, `sertifikat_tanah`, `status`) VALUES
-(1, 14, '629464ab133f9.jpeg', '629467ef2afa1.jpeg', 'Selesai'),
-(2, 15, '62946924e16ac.jpeg', '6294693b7f814.docx', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -115,18 +71,19 @@ INSERT INTO `sertifikat_tanah` (`id`, `id_pengajuan`, `bukti_pembayaran`, `serti
 CREATE TABLE `ukuran_tanah` (
   `id` int(11) NOT NULL,
   `id_pengajuan` int(11) NOT NULL,
-  `ukuran_tanah` varchar(25) NOT NULL,
-  `tanggal_pengukuran` date NOT NULL,
-  `dokumen_pl` varchar(25) NOT NULL
+  `id_petugas` int(11) DEFAULT NULL,
+  `waktu_pengukuran` date DEFAULT NULL,
+  `lebar_tanah` int(11) DEFAULT NULL,
+  `panjang_tanah` int(11) DEFAULT NULL,
+  `dokumen_pl` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ukuran_tanah`
 --
 
-INSERT INTO `ukuran_tanah` (`id`, `id_pengajuan`, `ukuran_tanah`, `tanggal_pengukuran`, `dokumen_pl`) VALUES
-(3, 14, '10 x 10', '2022-05-19', '62944f86df480.jpeg'),
-(4, 15, '150 x 50', '2022-05-18', '62946906b780e.docx');
+INSERT INTO `ukuran_tanah` (`id`, `id_pengajuan`, `id_petugas`, `waktu_pengukuran`, `lebar_tanah`, `panjang_tanah`, `dokumen_pl`) VALUES
+(3, 2, 9, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -136,43 +93,37 @@ INSERT INTO `ukuran_tanah` (`id`, `id_pengajuan`, `ukuran_tanah`, `tanggal_pengu
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
+  `role` varchar(10) NOT NULL,
   `nama` varchar(30) NOT NULL,
-  `password` varchar(100) NOT NULL,
   `tempat_lahir` varchar(15) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `no_ktp` int(11) NOT NULL,
+  `no_ktp` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
+  `password` varchar(70) NOT NULL,
   `telepon` varchar(15) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL
+  `alamat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `password`, `tempat_lahir`, `tanggal_lahir`, `no_ktp`, `email`, `telepon`, `alamat`, `is_admin`) VALUES
-(2, 'user', '$2y$10$QQdSjHGezozwZ48Z6mlcUeMl1AycAgQfF/oWlXvOCUFK7OjWfd95a', 'batam', '2022-05-10', 2147483647, 'user@gmail.com', '085161316855', 'btam', 0),
-(3, 'admin', '$2y$10$3AOdseb53RYuXJUxlgBRhuhoZBd4z9129TRN/aEvfmirKbbHBRujW', 'admin', '2022-05-11', 2147483647, 'admin@gmail.com', '0851546545454', 'batam', 1),
-(4, 'Mahmet Topan', '$2y$10$Tj3iH1qgG3QIWBsipzKc/u8DObla9dAgo7f4Tg3BXSAoZkbDIQV2.', 'Cilacap', '1999-02-05', 2147483647, 'mahmettopan23@gmail.com', '081364673820', 'Tiban Indah Permai blok K no. 20', 0);
+INSERT INTO `user` (`id`, `role`, `nama`, `tempat_lahir`, `tanggal_lahir`, `no_ktp`, `email`, `password`, `telepon`, `alamat`) VALUES
+(5, 'user', 'user', 'user', '2022-06-09', '331212053010001', 'user@gmail.com', '$2y$10$7rTSXINRD3V.XEpnwhmyoOQf8y1JEG5eDAvYZsPIFkUZQ89Qlz5jK', '0856785612221', 'user'),
+(6, 'admin', 'admin', 'admin', '2022-06-09', '22456584563210', 'admin@gmail.com', '$2y$10$6xzssgOvYLDDAkDZPMxl2.DUm/q7PAL3BIA.sjV5U1zS4Lfxuwfl2', '085646663254', 'admin'),
+(8, 'petugas', 'petugas1', 'petugas1', '2022-06-09', '1111111111111111', 'petugas1@gmail.com', '$2y$10$d/0m4ksgoD3.HAE91jRPS.c1jU0vAAR8.YMDSENsgf.hXJQaYabXC', '111111111111', 'petugas1'),
+(9, 'petugas', 'petugas2', 'petugas2', '2022-06-03', '22222222222222222', 'petugas2@gmail.com', '$2y$10$1Saktq5C1pin9yMvuHwbyul7JMQM6tJtn47i76IG/GNJfQNYt0phK', '222222222222', 'petugas2');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `pengajuan_sk`
+-- Indexes for table `pengajuan_ukur_tanah`
 --
-ALTER TABLE `pengajuan_sk`
+ALTER TABLE `pengajuan_ukur_tanah`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_user` (`id_user`,`id_petugas`),
-  ADD KEY `id_petugas` (`id_petugas`);
-
---
--- Indexes for table `petugas`
---
-ALTER TABLE `petugas`
-  ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `sertifikat_tanah`
@@ -186,7 +137,8 @@ ALTER TABLE `sertifikat_tanah`
 --
 ALTER TABLE `ukuran_tanah`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_pengajuan` (`id_pengajuan`);
+  ADD UNIQUE KEY `id_pengajuan` (`id_pengajuan`),
+  ADD UNIQUE KEY `id_petugas` (`id_petugas`);
 
 --
 -- Indexes for table `user`
@@ -199,57 +151,51 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `pengajuan_sk`
+-- AUTO_INCREMENT for table `pengajuan_ukur_tanah`
 --
-ALTER TABLE `pengajuan_sk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `petugas`
---
-ALTER TABLE `petugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `pengajuan_ukur_tanah`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sertifikat_tanah`
 --
 ALTER TABLE `sertifikat_tanah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ukuran_tanah`
 --
 ALTER TABLE `ukuran_tanah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `pengajuan_sk`
+-- Constraints for table `pengajuan_ukur_tanah`
 --
-ALTER TABLE `pengajuan_sk`
-  ADD CONSTRAINT `pengajuan_sk_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `pengajuan_sk_ibfk_2` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id`);
+ALTER TABLE `pengajuan_ukur_tanah`
+  ADD CONSTRAINT `pengajuan_ukur_tanah_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `sertifikat_tanah`
 --
 ALTER TABLE `sertifikat_tanah`
-  ADD CONSTRAINT `sertifikat_tanah_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_sk` (`id`);
+  ADD CONSTRAINT `sertifikat_tanah_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_ukur_tanah` (`id`);
 
 --
 -- Constraints for table `ukuran_tanah`
 --
 ALTER TABLE `ukuran_tanah`
-  ADD CONSTRAINT `ukuran_tanah_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_sk` (`id`);
+  ADD CONSTRAINT `ukuran_tanah_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_ukur_tanah` (`id`),
+  ADD CONSTRAINT `ukuran_tanah_ibfk_2` FOREIGN KEY (`id_petugas`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
