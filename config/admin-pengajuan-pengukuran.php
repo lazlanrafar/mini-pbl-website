@@ -1,25 +1,33 @@
 <?php
 require 'index.php';
 
-$reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk");
-$list_petugas = mysqli_query($conn, "SELECT * FROM petugas ");
+$reports = mysqli_query($conn, "SELECT * FROM pengajuan_ukur_tanah");
+
+function handleKonfirmasi($id) {
+	global $conn;
+	mysqli_query($conn, "UPDATE pengajuan_ukur_tanah SET status = 'Menunggu Jadwal Ukur' WHERE id = $id");
+
+	setPetugasPengukur($id);
+	return mysqli_affected_rows($conn);
+}
+
+function setPetugasPengukur($id) {
+	global $conn;
+	$id_petugas = mysqli_query($conn, "SELECT id FROM user WHERE role = 'Petugas' ORDER BY RAND() LIMIT 1");
+	$id_petugas = mysqli_fetch_assoc($id_petugas);
+	$id_petugas = $id_petugas['id'];
+
+	mysqli_query($conn, "INSERT INTO `ukuran_tanah`(`id`, `id_pengajuan`, `id_petugas`, `waktu_pengukuran`, `lebar_tanah`, `panjang_tanah`, `dokumen_pl`) VALUES (NULL,'$id','$id_petugas',NULL,NULL,NULL,NULL)");
+	return mysqli_affected_rows($conn);
+}
 
 function setStatusDataTidakValid($id) {
 	global $conn;
-	mysqli_query($conn, "UPDATE pengajuan_sk SET status = 'Data Tidak Valid' WHERE id = $id");
+	mysqli_query($conn, "UPDATE pengajuan_ukur_tanah SET status = 'Data Tidak Valid' WHERE id = $id");
 	return mysqli_affected_rows($conn);
 }
 
-function setPetugasPengukur($data) {
-	global $conn;
-	$id = htmlspecialchars($data["id"]);
-	$id_petugas = htmlspecialchars($data["id_petugas"]);
-	var_dump($id);
-	var_dump($id_petugas);
-	mysqli_query($conn, "UPDATE pengajuan_sk SET id_petugas = '$id_petugas' WHERE id = $id");
-	mysqli_query($conn, "UPDATE pengajuan_sk SET status = 'Petugas Telah Ditentukan' WHERE id = $id");
-	return mysqli_affected_rows($conn);
-}
+
 
 function setUkuranTanah($data){
 	global $conn;
@@ -44,8 +52,8 @@ function setUkuranTanah($data){
 	$biayaPendaftaran = 500000;
 	$total = $biayaPengukuran + $biayaPemeriksaan + $biayaPendaftaran;
 
-	mysqli_query($conn, "UPDATE pengajuan_sk SET status = 'Selesai' WHERE id = $id_pengajuan");
-	mysqli_query($conn, "UPDATE pengajuan_sk SET biaya = $total WHERE id = $id_pengajuan");
+	mysqli_query($conn, "UPDATE pengajuan_ukur_tanah SET status = 'Selesai' WHERE id = $id_pengajuan");
+	mysqli_query($conn, "UPDATE pengajuan_ukur_tanah SET biaya = $total WHERE id = $id_pengajuan");
 
 	mysqli_query($conn, "INSERT INTO sertifikat_tanah (`id`, `id_pengajuan`, `bukti_pembayaran`,`sertifikat_tanah`, `status`) VALUES (NULL, '$id_pengajuan','','', 'Menunggu Pembayaran')");
 	return mysqli_affected_rows($conn);

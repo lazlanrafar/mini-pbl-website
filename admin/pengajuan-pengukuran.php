@@ -2,10 +2,14 @@
 require '../partials/session-admin.php';
 require '../config/admin-pengajuan-pengukuran.php';
 
-if(isset($_GET['datatidakvalid'])){
-  setStatusDataTidakValid($_GET['datatidakvalid']);
+if(isset($_GET['konfirmasi'])){
+  handleKonfirmasi($_GET['konfirmasi']);
   header("Location: pengajuan-pengukuran.php");
 }
+// if(isset($_GET['datatidakvalid'])){
+//   setStatusDataTidakValid($_GET['datatidakvalid']);
+//   header("Location: pengajuan-pengukuran.php");
+// }
 
 ?>
 
@@ -46,7 +50,6 @@ if(isset($_GET['datatidakvalid'])){
                             <th>SHGB</th>
                             <th>IMB</th>
                             <th>SPPT PBB</th>
-                            <th>Petugas</th>
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
@@ -63,15 +66,14 @@ if(isset($_GET['datatidakvalid'])){
                               <?= $data["alamat_lengkap"]; ?>
                             </td>
                             <td>
-                              <a href="docs/<?= $data["shgb"]; ?>" target="_BLANK">Download</a>
+                              <a href="docs/<?= $data["shgb"]; ?>" target="_BLANK">Lihat</a>
                             </td>
                             <td>
-                              <a href="docs/<?= $data["imb"]; ?>" target="_BLANK">Download</a>
+                              <a href="docs/<?= $data["imb"]; ?>" target="_BLANK">Lihat</a>
                             </td>
                             <td>
-                              <a href="docs/<?= $data["sppt_pbb"]; ?>" target="_BLANK">Download</a>
+                              <a href="docs/<?= $data["sppt_pbb"]; ?>" target="_BLANK">Lihat</a>
                             </td>
-                            <td><?= $data["id_petugas"]; ?></td>
                             <td>
                             <?php if($data['status'] == "Selesai") { ?>
                               <span class="badge badge-success"><?= $data["status"]; ?></span>
@@ -82,25 +84,21 @@ if(isset($_GET['datatidakvalid'])){
                             <?php }  ?>
                             </td>
                             <td>
-                              <?php if($data['status'] != "Selesai") { ?>
-                              <?php if($data['status'] != "Data Tidak Valid") { ?>
-                              <div class="btn-group dropleft">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu">
-                                    <?php if($data['status'] == "Menunggu Konfirmasi") { ?>
-                                      <a class="dropdown-item" href="pengajuan-pengukuran-tentukan-petugas.php?id=<?= $data['id'] ?>">Tentukan Petugas</a>
-                                      
-                                    <?php } ?>
-                                    <?php if($data['status'] == "Petugas Telah Ditentukan") { ?>
-                                      <a class="dropdown-item" href="pengajuan-pengukuran-masukan-luas-tanah.php?id=<?= $data['id'] ?>">Masukan Luas Tanah</a>
-                                    <?php } ?>
-                                    <a class="dropdown-item text-danger font-weight-bold" href="pengajuan-pengukuran.php?datatidakvalid=<?= $data['id'] ?>">Data tidak Valid</a>
-                                </div>
-                            </div>
-                            <?php } ?>
-                            <?php } ?>
+                              <?php if($data['status'] == "Menunggu Konfirmasi") { ?>
+                                  <?php if($data['status'] != "Data Tidak Valid") { ?>
+                                    <div class="btn-group dropleft">
+                                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Action
+                                      </button>
+                                      <div class="dropdown-menu">
+                                          <?php if($data['status'] == "Menunggu Konfirmasi") { ?>
+                                            <a class="dropdown-item" href="pengajuan-pengukuran.php?konfirmasi=<?= $data['id'] ?>"">Konfirmasi</a>
+                                            <a class="dropdown-item text-danger font-weight-bold" href="pengajuan-pengukuran.php?datatidakvalid=<?= $data['id'] ?>">Data tidak Valid</a>
+                                          <?php } ?>
+                                      </div>
+                                    </div>
+                                  <?php } ?>
+                                <?php } ?>
                             </td>
                       
                           </tr>
