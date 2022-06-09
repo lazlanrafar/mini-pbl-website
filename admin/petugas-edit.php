@@ -5,7 +5,7 @@ require '../config/admin-petugas.php' ;
 $id = $_GET["id"];
 
 // query data petugas berdasarkan id
-$data = query("SELECT * FROM petugas WHERE id = $id")[0];
+$data = query("SELECT * FROM user WHERE id = $id")[0];
 
 // cek apakah tombol submit sudah ditekan atau belum
 if( isset($_POST["submit"]) ) {

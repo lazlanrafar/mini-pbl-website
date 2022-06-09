@@ -5,7 +5,7 @@ require '../config/admin-petugas.php' ;
 if( isset($_POST["submit"]) ) {
 	
 	// cek apakah data berhasil di tambahkan atau tidak
-	if( tambah($_POST) > 0 ) {
+	if( tambahPetugas($_POST) > 0 ) {
 		echo "
 			<script>
 				alert('data berhasil ditambahkan!');
@@ -54,7 +54,22 @@ if( isset($_POST["submit"]) ) {
                   <form class="form" action="" method="post">
                     <div class="form-body">
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
+                          <div class="form-label-group mb-2">
+                            <input
+                              type="text"
+                              id="no-ktp"
+                              class="form-control"
+                              placeholder="No KTP"
+                              name="no_ktp"
+                              required
+                            />
+                            <label for="no-ktp"
+                              >No KTP</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col-6">
                           <div class="form-label-group mb-2">
                             <input
                               type="text"
@@ -69,7 +84,7 @@ if( isset($_POST["submit"]) ) {
                             >
                           </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-3">
                           <div class="form-label-group mb-2">
                             <input
                               type="tempat-lahir"
@@ -84,7 +99,7 @@ if( isset($_POST["submit"]) ) {
                             >
                           </div>
                         </div>
-                        <div class="col-5">
+                        <div class="col-3">
                           <div class="form-label-group mb-2">
                             <input
                               id="tanggal-lahir-floating"
@@ -97,6 +112,19 @@ if( isset($_POST["submit"]) ) {
                             <label for="tanggal-lahir-floating"
                               >Tanggal Lahir</label
                             >
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-label-group mb-2">
+                            <input
+                              type="text"
+                              id="telepon-floating"
+                              class="form-control"
+                              name="telepon"
+                              placeholder="Telepon"
+                              required
+                            />
+                            <label for="telepon-floating">Telepon</label>
                           </div>
                         </div>
                         <div class="col-12">
@@ -115,16 +143,17 @@ if( isset($_POST["submit"]) ) {
                         <div class="col-12">
                           <div class="form-label-group mb-2">
                             <input
-                              type="text"
-                              id="telepon-floating"
+                              type="password"
+                              id="password-floating"
                               class="form-control"
-                              name="telepon"
-                              placeholder="Telepon"
+                              name="password"
+                              placeholder="Password"
                               required
                             />
-                            <label for="telepon-floating">Telepon</label>
+                            <label for="password-floating">Password</label>
                           </div>
                         </div>
+                        
                         <div class="col-12">
                           <div class="form-label-group mb-2">
                             <textarea

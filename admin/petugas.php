@@ -43,7 +43,7 @@ require '../config/admin-petugas.php' ;
                       <table class="table">
                         <thead>
                           <tr>
-                          <th>No</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Tempat, Tanggal Lahir</th>
                             <th>Email</th>

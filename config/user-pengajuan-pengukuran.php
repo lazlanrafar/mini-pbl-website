@@ -1,7 +1,9 @@
 <?php
 require 'index.php';
 
-function tambah($data) {
+$reports = mysqli_query($conn, "SELECT * FROM `pengajuan_ukur_tanah` WHERE id_user = '$_SESSION[userId]'");
+
+function MengajukanPengukuran($data) {
 	global $conn;
 
 	$id_user = htmlspecialchars($data["id_user"]);
@@ -18,7 +20,7 @@ function tambah($data) {
 		return false;
 	}
 
-	$query = "INSERT INTO pengajuan_sk (`id`, `id_user`, `id_petugas`, `id_admin`, `provinsi`, `kecamatan`, `kota`, `alamat_lengkap`, `shgb`, `imb`, `sppt_pbb`,`biaya`, `status`, `updated_at`) VALUES (NULL, '$id_user',NULL,NULL, '$provinsi', '$kecamatan', '$kota', '$alamat_lengkap', '$shgb', '$imb', '$sppt_pbb', '', 'Menunggu Konfirmasi', '')";
+	$query = "INSERT INTO `pengajuan_ukur_tanah`(`id`, `id_user`, `shgb`, `imb`, `sppt_pbb`, `provinsi`, `kota`, `kecamatan`, `alamat_lengkap`, `status`) VALUES ('', '$id_user', '$shgb', '$imb', '$sppt_pbb', '$provinsi', '$kota', '$kecamatan', '$alamat_lengkap', 'Menunggu Konfirmasi')";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);

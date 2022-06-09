@@ -1,8 +1,7 @@
 <?php 
 require '../partials/session.php';
-require '../config/pengajuan-pengukuran.php';
+require '../config/user-pengajuan-pengukuran.php';
 
-$reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SESSION[userId]'");
 ?>
 
 <!DOCTYPE html>
@@ -56,11 +55,11 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                             <th>SHGB</th>
                             <th>IMB</th>
                             <th>SPPT PBB</th>
-                            <th>Petugas</th>
                             <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
+
                           <?php $i = 1; ?>
                           <?php foreach ($reports as $data) : ?>
                           <tr>
@@ -80,7 +79,6 @@ $reports = mysqli_query($conn, "SELECT * FROM pengajuan_sk WHERE id_user = '$_SE
                             <td>
                               <a href="../docs/<?= $data["sppt_pbb"]; ?>" target="_BLANK">Download</a>
                             </td>
-                            <td><?= $data["id_petugas"]; ?></td>
                             <td>
                             <?php if($data['status'] == "Selesai") { ?>
                               <span class="badge badge-success"><?= $data["status"]; ?></span>

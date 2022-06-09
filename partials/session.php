@@ -6,7 +6,7 @@ if( !isset($_SESSION["login"]) ) {
 	exit;
 }
 
-if( $_SESSION["isAdmin"] == 1 ) {
+if( $_SESSION["role"] == "admin" ) {
   header("Location: ../admin/dashboard.php");
   exit;
 }
