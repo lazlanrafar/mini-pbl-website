@@ -20,10 +20,12 @@ if( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
 }
 
 if( isset($_SESSION["login"]) ) {
-	if( $_SESSION["role"] == "user" ) {
-    header("Location: user/dashboard.php");
-  }else{
+	if( $_SESSION["role"] == "admin" ) {
     header("Location: admin/dashboard.php");
+  }else if( $_SESSION["role"] == "petugas" ) {
+    header("Location: petugas/index.php");
+  }else{
+    header("Location: user/dashboard.php");
   }
 	exit;
 }
@@ -47,8 +49,10 @@ if( isset($_POST["login"]) ) {
 			$_SESSION["role"] = $row['role'];
 			$_SESSION["userId"] = $row['id'];
 
-			if( $row["role"] == "user" ) {
+			if( $row["role"] == "admin" ) {
         header("Location: admin/dashboard.php");
+      }else if( $row["role"] == "petugas" ) {
+        header("Location: petugas/index.php");
       }else{
         header("Location: user/dashboard.php");
       }
