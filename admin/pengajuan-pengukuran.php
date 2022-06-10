@@ -85,20 +85,23 @@ if(isset($_GET['konfirmasi'])){
                             </td>
                             <td>
                               <?php if($data['status'] == "Menunggu Konfirmasi") { ?>
-                                  <?php if($data['status'] != "Data Tidak Valid") { ?>
-                                    <div class="btn-group dropleft">
-                                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          Action
-                                      </button>
-                                      <div class="dropdown-menu">
-                                          <?php if($data['status'] == "Menunggu Konfirmasi") { ?>
-                                            <a class="dropdown-item" href="pengajuan-pengukuran.php?konfirmasi=<?= $data['id'] ?>"">Konfirmasi</a>
-                                            <a class="dropdown-item text-danger font-weight-bold" href="pengajuan-pengukuran.php?datatidakvalid=<?= $data['id'] ?>">Data tidak Valid</a>
-                                          <?php } ?>
-                                      </div>
+                                <?php if($data['status'] != "Data Tidak Valid") { ?>
+                                  <div class="btn-group dropleft">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <?php if($data['status'] == "Menunggu Konfirmasi") { ?>
+                                          <a class="dropdown-item" href="pengajuan-pengukuran.php?konfirmasi=<?= $data['id'] ?>"">Konfirmasi</a>
+                                          <a class="dropdown-item text-danger font-weight-bold" href="pengajuan-pengukuran.php?datatidakvalid=<?= $data['id'] ?>">Data tidak Valid</a>
+                                        <?php } ?>
                                     </div>
-                                  <?php } ?>
+                                  </div>
                                 <?php } ?>
+                              <?php } ?>
+                              <?php if($data['status'] == "Menunggu Harga Pembayaran") { ?>
+                                <a href="pengajuan-pengukuran-konfirmasi.php?id=<?= $data['id'] ?>" class="btn btn-primary">Konfirmasi</a>
+                              <?php } ?>
                             </td>
                       
                           </tr>

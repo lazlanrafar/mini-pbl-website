@@ -4,7 +4,8 @@ require '../config/admin-pengajuan-pengukuran.php';
 
 if( isset($_POST["submit"]) ) {
 	
-	if( setPetugasPengukur($_POST) > 0 ) {
+	// cek apakah data berhasil di tambahkan atau tidak
+	if( setBiayaPengukuran($_POST) > 0 ) {
 		echo "
 			<script>
 				alert('data berhasil ditambahkan!');
@@ -22,7 +23,6 @@ if( isset($_POST["submit"]) ) {
 
 
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -44,42 +44,40 @@ if( isset($_POST["submit"]) ) {
       <div class="content-wrapper">
         <div class="content-header row"></div>
         <div class="content-body">
-          <div class="row" id="basic-table">
-            <div class="col-12">
+          <div class="row justify-content-center">
+            <div class="col-5">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Penentuan Petugas Pengukuran Tanah</h4>
+                  <h4 class="card-title">Masukan Biaya</h4>
                 </div>
-                <div class="card-content">
-                  <div class="card-body">
-                    <form action="" method="post">
-                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-                      <fieldset class="form-group">
-                        <select
-                          class="select2-size-lg form-control"
-                          id="basicSelect"
-                          name="id_petugas"
-                        >
-                          <?php foreach ($list_petugas as $data): ?>
-                          <option value="<?= $data['id'] ?>">
-                            <?= $data['nama'] ?>,
-                            <?= $data['tempat_lahir'] ?>
-                            <?= $data['tanggal_lahir'] ?>,
-                            <?= $data['email'] ?>,
-                            <?= $data['telepon'] ?>,
-                            <?= $data['alamat'] ?>,
-                          </option>
-                          <?php endforeach ?>
-                        </select>
-                      </fieldset>
+                <div class="card-body">
+                  <form class="form" action="" method="post">
+                      <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+                    <div class="form-body">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="form-label-group mb-2">
+                            <input
+                              type="text"
+                              id="biaya"
+                              class="form-control"
+                              placeholder="Biaya Pengukuran"
+                              name="biaya"
+                              required
+                            />
+                            <label for="biaya"
+                              >Biaya Pengukuran</label
+                            >
+                          </div>
+                        </div>
+                      </div>
                       <div class="d-flex justify-content-end">
-                        <button type="submit" name="submit" class="btn btn-primary">
-                          <i class="feather icon-save"></i>
-                          Simpan
+                        <button type="submit" name="submit" class="btn btn-primary mr-1 mb-1">
+                          Submit
                         </button>
                       </div>
-                    </form>
-                  </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
