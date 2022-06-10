@@ -56,7 +56,7 @@ require '../config/admin-pengajuan-sertifikat.php' ;
                             <td>
                               <a href="../docs/<?= $data['dokumen_pl'] ?>" target="_BLANK">Download</a>
                             </td>
-                            <td><?= $data['ukuran_tanah'] ?></td>
+                            <td><?= $data['panjang_tanah'] ?> x <?= $data['lebar_tanah'] ?></td>
                             <td><?= $data['biaya'] ?></td>
                             <td>
                               <?php if($data['status'] == "Selesai") : ?>

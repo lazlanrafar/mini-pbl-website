@@ -42,8 +42,8 @@ if( isset($_POST["submit"]) ) {
       <div class="content-wrapper">
         <div class="content-header row"></div>
         <div class="content-body">
-          <div class="row" id="basic-table">
-            <div class="col-12">
+          <div class="row justify-content-center" id="basic-table">
+            <div class="col-6">
               <div class="card">
                 <div class="card-header">
                   <h4 class="card-title">Upload Sertifikat Tanah</h4>
