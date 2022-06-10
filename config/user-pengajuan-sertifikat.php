@@ -1,17 +1,7 @@
 <?php
 require 'index.php';
 
-$reports = query("SELECT 
-sertifikat_tanah.id, sertifikat_tanah.status, sertifikat_tanah.sertifikat_tanah, 
-pengajuan_sk.provinsi, pengajuan_sk.kota, pengajuan_sk.kecamatan, pengajuan_sk.alamat_lengkap,
-pengajuan_sk.biaya,
-ukuran_tanah.ukuran_tanah, ukuran_tanah.dokumen_pl
-FROM sertifikat_tanah 
-JOIN pengajuan_sk 
-ON sertifikat_tanah.id_pengajuan = pengajuan_sk.id 
-JOIN ukuran_tanah
-ON ukuran_tanah.id_pengajuan = pengajuan_sk.id
-WHERE pengajuan_sk.id_user = '$_SESSION[userId]'");
+$reports = mysqli_query($conn, "SELECT sertifikat_tanah.id,sertifikat_tanah.biaya,sertifikat_tanah.status, sertifikat_tanah.bukti_pembayaran,sertifikat_tanah.sertifikat_tanah,pengajuan_ukur_tanah.provinsi,pengajuan_ukur_tanah.kota, pengajuan_ukur_tanah.kecamatan, pengajuan_ukur_tanah.alamat_lengkap, ukuran_tanah.dokumen_pl, ukuran_tanah.panjang_tanah, ukuran_tanah.lebar_tanah FROM sertifikat_tanah JOIN pengajuan_ukur_tanah ON sertifikat_tanah.id_pengajuan = pengajuan_ukur_tanah.id JOIN ukuran_tanah ON ukuran_tanah.id_pengajuan = pengajuan_ukur_tanah.id WHERE pengajuan_ukur_tanah.id_user = '$_SESSION[userId]'");
 
 
 function uploadBuktiPembayaran($data){
