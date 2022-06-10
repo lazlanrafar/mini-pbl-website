@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 11:24 AM
+-- Generation Time: Jun 10, 2022 at 04:58 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.14
 
@@ -45,7 +45,7 @@ CREATE TABLE `pengajuan_ukur_tanah` (
 --
 
 INSERT INTO `pengajuan_ukur_tanah` (`id`, `id_user`, `shgb`, `imb`, `sppt_pbb`, `provinsi`, `kota`, `kecamatan`, `alamat_lengkap`, `status`) VALUES
-(2, 5, '62a1a7c0cc074.pdf', '62a1a7c0cc36e.pdf', '62a1a7c0cc60f.pdf', 'Kepulauan Riau', 'Batam Centre', 'Batam Centre', 'Perumahan Citra Batam', 'Menunggu Jadwal Ukur');
+(2, 5, '62a1a7c0cc074.pdf', '62a1a7c0cc36e.pdf', '62a1a7c0cc60f.pdf', 'Kepulauan Riau', 'Batam Centre', 'Batam Centre', 'Perumahan Citra Batam', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -57,10 +57,17 @@ CREATE TABLE `sertifikat_tanah` (
   `id` int(11) NOT NULL,
   `id_pengajuan` int(11) NOT NULL,
   `biaya` varchar(30) NOT NULL,
-  `bukti_pembayaran` varchar(30) NOT NULL,
-  `sertifikat_tanah` varchar(30) NOT NULL,
-  `status` varchar(30) NOT NULL
+  `bukti_pembayaran` varchar(30) DEFAULT NULL,
+  `sertifikat_tanah` varchar(30) DEFAULT NULL,
+  `status` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sertifikat_tanah`
+--
+
+INSERT INTO `sertifikat_tanah` (`id`, `id_pengajuan`, `biaya`, `bukti_pembayaran`, `sertifikat_tanah`, `status`) VALUES
+(1, 2, '500.000', '62a2b21988286.pdf', '62a2b31c5984d.pdf', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -83,7 +90,7 @@ CREATE TABLE `ukuran_tanah` (
 --
 
 INSERT INTO `ukuran_tanah` (`id`, `id_pengajuan`, `id_petugas`, `waktu_pengukuran`, `lebar_tanah`, `panjang_tanah`, `dokumen_pl`) VALUES
-(3, 2, 9, NULL, NULL, NULL, NULL);
+(3, 2, 9, '2022-06-07', 100, 120, '62a2a9c076455.pdf');
 
 -- --------------------------------------------------------
 
@@ -160,7 +167,7 @@ ALTER TABLE `pengajuan_ukur_tanah`
 -- AUTO_INCREMENT for table `sertifikat_tanah`
 --
 ALTER TABLE `sertifikat_tanah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ukuran_tanah`
