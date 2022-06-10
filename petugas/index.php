@@ -79,7 +79,10 @@ require '../config/petugas.php';
                             <td scope="row"><?= $data['status'] ?></td>
                             <td>
                               <?php if ($data["status"] == "Menunggu Jadwal Ukur") : ?>
-                                  <a href="index.php" class="btn btn-primary">Atur Jadwal</a>
+                                  <a href="atur-jadwal.php?id=<?= $data['id'] ?>" class="btn btn-primary">Atur Jadwal</a>
+                              <?php endif ?>
+                              <?php if ($data["status"] == "Menunggu Hasil Ukur") : ?>
+                                  <a href="form-hasil-ukur.php?id=<?= $data['id'] ?>" class="btn btn-primary">Masukan Hasil Ukur</a>
                               <?php endif ?>
                             </td>
                       
