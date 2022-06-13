@@ -34,7 +34,7 @@ if( isset($_POST["submit"]) ) {
     data-menu="vertical-menu-modern"
     data-col="2-columns"
   >
-  <?php require '../partials/navbar.php' ?>
+  <?php require '../partials/navbar-admin.php' ?>
     <?php require '../partials/sidebar-admin-petugas.php' ?>
 
     <!-- BEGIN: Content-->

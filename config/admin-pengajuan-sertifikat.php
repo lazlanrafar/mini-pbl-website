@@ -14,6 +14,12 @@ function uploadSertifikatTanah($data){
     }
     mysqli_query($conn, "UPDATE sertifikat_tanah SET sertifikat_tanah = '$sertifikat_tanah' WHERE id = $id");
     mysqli_query($conn, "UPDATE sertifikat_tanah SET status = 'Selesai' WHERE id = $id");
+
+	// Notifikasi ke pemohon
+	$id_user = mysqli_query($conn, "SELECT id_user FROM pengajuan_ukur_tanah WHERE id = $id");
+	$id_user = mysqli_fetch_assoc($id_user);
+	$id_user = $id_user["id_user"];
+	mysqli_query($conn, "INSERT INTO `notifikasi`(`id`, `id_user`, `pesan`) VALUES (NULL,'$id_user','Sertifikat Tanah anda telah kami terima. Silahkan download sertifikat anda.')");
     return mysqli_affected_rows($conn);
 }
 

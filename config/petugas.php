@@ -18,6 +18,12 @@ function setJadwalPengukuran($data){
     $id_pengajuan = $id_pengajuan["id_pengajuan"];
     mysqli_query($conn, "UPDATE pengajuan_ukur_tanah SET status = 'Menunggu Hasil Ukur' WHERE id = '$id_pengajuan'");
 
+	// Notifikasi ke pemohon
+	$id_user = mysqli_query($conn, "SELECT id_user FROM pengajuan_ukur_tanah WHERE id = $id_pengajuan");
+	$id_user = mysqli_fetch_assoc($id_user);
+	$id_user = $id_user["id_user"];
+	mysqli_query($conn, "INSERT INTO `notifikasi`(`id`, `id_user`, `pesan`) VALUES (NULL,'$id_user','Menunggu Hasil Ukur')");
+
     return mysqli_affected_rows($conn);
 }
 
@@ -39,6 +45,12 @@ function handleHasilUkur($data){
     $id_pengajuan = mysqli_fetch_assoc($id_pengajuan);
     $id_pengajuan = $id_pengajuan["id_pengajuan"];
     mysqli_query($conn, "UPDATE pengajuan_ukur_tanah SET status = 'Menunggu Harga Pembayaran' WHERE id = '$id_pengajuan'");
+
+	// Notifikasi ke pemohon
+	$id_user = mysqli_query($conn, "SELECT id_user FROM pengajuan_ukur_tanah WHERE id = $id_pengajuan");
+	$id_user = mysqli_fetch_assoc($id_user);
+	$id_user = $id_user["id_user"];
+	mysqli_query($conn, "INSERT INTO `notifikasi`(`id`, `id_user`, `pesan`) VALUES (NULL,'$id_user','Menunggu Hasil Konfirmasi Dari Petugas Pemeriksa')");
 
     return mysqli_affected_rows($conn);
 }

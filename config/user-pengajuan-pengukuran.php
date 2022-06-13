@@ -21,7 +21,7 @@ function MengajukanPengukuran($data) {
 	}
 
 	$query = "INSERT INTO `pengajuan_ukur_tanah`(`id`, `id_user`, `shgb`, `imb`, `sppt_pbb`, `provinsi`, `kota`, `kecamatan`, `alamat_lengkap`, `status`) VALUES ('', '$id_user', '$shgb', '$imb', '$sppt_pbb', '$provinsi', '$kota', '$kecamatan', '$alamat_lengkap', 'Menunggu Konfirmasi')";
-	mysqli_query($conn, $query);
+
 
 	return mysqli_affected_rows($conn);
 }

@@ -14,7 +14,7 @@ require '../config/admin-pengajuan-sertifikat.php' ;
     data-menu="vertical-menu-modern"
     data-col="2-columns"
   >
-    <?php require '../partials/navbar.php' ?>
+    <?php require '../partials/navbar-admin.php' ?>
     <?php require '../partials/sidebar-admin-sertifikat.php' ?>
 
     <!-- BEGIN: Content-->

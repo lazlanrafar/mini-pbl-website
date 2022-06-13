@@ -13,7 +13,7 @@ require '../config/user-pengajuan-pengukuran.php';
     data-menu="vertical-menu-modern"
     data-col="2-columns"
   >
-    <?php require '../partials/navbar.php' ?>
+    <?php require '../partials/navbar-user.php' ?>
     <?php require '../partials/sidebar-user-pengukuran.php' ?>
 
     <!-- BEGIN: Content-->
