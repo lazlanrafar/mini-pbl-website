@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 03:54 AM
+-- Generation Time: Jun 13, 2022 at 04:49 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.14
 
@@ -33,6 +33,17 @@ CREATE TABLE `notifikasi` (
   `pesan` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `notifikasi`
+--
+
+INSERT INTO `notifikasi` (`id`, `id_user`, `pesan`) VALUES
+(2, 9, 'Menunggu Jadwal Pengukuran'),
+(3, 5, 'Menunggu Hasil Ukur'),
+(4, 5, 'Menunggu Hasil Konfirmasi Dari Petugas Pemeriksa'),
+(5, 5, 'Menunggu Pembayaran'),
+(6, 5, 'Sertifikat Tanah anda telah kami terima. Silahkan download sertifikat anda.');
+
 -- --------------------------------------------------------
 
 --
@@ -57,7 +68,8 @@ CREATE TABLE `pengajuan_ukur_tanah` (
 --
 
 INSERT INTO `pengajuan_ukur_tanah` (`id`, `id_user`, `shgb`, `imb`, `sppt_pbb`, `provinsi`, `kota`, `kecamatan`, `alamat_lengkap`, `status`) VALUES
-(2, 5, '62a1a7c0cc074.pdf', '62a1a7c0cc36e.pdf', '62a1a7c0cc60f.pdf', 'Kepulauan Riau', 'Batam Centre', 'Batam Centre', 'Perumahan Citra Batam', 'Selesai');
+(2, 5, '62a1a7c0cc074.pdf', '62a1a7c0cc36e.pdf', '62a1a7c0cc60f.pdf', 'Kepulauan Riau', 'Batam Centre', 'Batam Centre', 'Perumahan Citra Batam', 'Selesai'),
+(13, 5, '62a69cbf6c45f.pdf', '62a69cbf6ccc7.pdf', '62a69cbf6cfd6.pdf', 'Kepulauan Riau', 'Tiban', 'Tiban Kampung', 'Rt6/2', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -79,7 +91,8 @@ CREATE TABLE `sertifikat_tanah` (
 --
 
 INSERT INTO `sertifikat_tanah` (`id`, `id_pengajuan`, `biaya`, `bukti_pembayaran`, `sertifikat_tanah`, `status`) VALUES
-(1, 2, '500.000', '62a2b21988286.pdf', '62a2b31c5984d.pdf', 'Selesai');
+(1, 2, '500.000', '62a2b21988286.pdf', '62a2b31c5984d.pdf', 'Selesai'),
+(2, 13, '600.000', '62a6a4e070e52.pdf', '62a6a4f31397d.pdf', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -102,7 +115,8 @@ CREATE TABLE `ukuran_tanah` (
 --
 
 INSERT INTO `ukuran_tanah` (`id`, `id_pengajuan`, `id_petugas`, `waktu_pengukuran`, `lebar_tanah`, `panjang_tanah`, `dokumen_pl`) VALUES
-(3, 2, 9, '2022-06-07', 100, 120, '62a2a9c076455.pdf');
+(3, 2, 9, '2022-06-07', 100, 120, '62a2a9c076455.pdf'),
+(5, 13, 9, '2022-06-23', 50, 50, '62a6a26d4b0e3.pdf');
 
 -- --------------------------------------------------------
 
@@ -142,29 +156,29 @@ INSERT INTO `user` (`id`, `role`, `nama`, `tempat_lahir`, `tanggal_lahir`, `no_k
 --
 ALTER TABLE `notifikasi`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_user` (`id_user`);
+  ADD KEY `id_user_2` (`id_user`);
 
 --
 -- Indexes for table `pengajuan_ukur_tanah`
 --
 ALTER TABLE `pengajuan_ukur_tanah`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_user` (`id_user`);
+  ADD KEY `id_user_2` (`id_user`);
 
 --
 -- Indexes for table `sertifikat_tanah`
 --
 ALTER TABLE `sertifikat_tanah`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_pengajuan` (`id_pengajuan`);
+  ADD KEY `id_pengajuan_2` (`id_pengajuan`);
 
 --
 -- Indexes for table `ukuran_tanah`
 --
 ALTER TABLE `ukuran_tanah`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_pengajuan` (`id_pengajuan`),
-  ADD UNIQUE KEY `id_petugas` (`id_petugas`);
+  ADD KEY `id_petugas_2` (`id_petugas`),
+  ADD KEY `id_pengajuan_2` (`id_pengajuan`);
 
 --
 -- Indexes for table `user`
@@ -180,25 +194,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pengajuan_ukur_tanah`
 --
 ALTER TABLE `pengajuan_ukur_tanah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `sertifikat_tanah`
 --
 ALTER TABLE `sertifikat_tanah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ukuran_tanah`
 --
 ALTER TABLE `ukuran_tanah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
