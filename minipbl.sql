@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 04:58 AM
+-- Generation Time: Jun 13, 2022 at 03:54 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.14
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `minipbl`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifikasi`
+--
+
+CREATE TABLE `notifikasi` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `pesan` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -126,6 +138,13 @@ INSERT INTO `user` (`id`, `role`, `nama`, `tempat_lahir`, `tanggal_lahir`, `no_k
 --
 
 --
+-- Indexes for table `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `pengajuan_ukur_tanah`
 --
 ALTER TABLE `pengajuan_ukur_tanah`
@@ -158,6 +177,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `pengajuan_ukur_tanah`
 --
 ALTER TABLE `pengajuan_ukur_tanah`
@@ -184,6 +209,12 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  ADD CONSTRAINT `notifikasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `pengajuan_ukur_tanah`
