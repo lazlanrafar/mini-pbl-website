@@ -11,12 +11,12 @@
 
   <link
     rel="apple-touch-icon"
-    href="app-assets/images/ico/apple-icon-120.png"
+    href="logo.png"
   />
   <link
     rel="shortcut icon"
     type="image/x-icon"
-    href="app-assets/images/ico/favicon.ico"
+    href="logo.png"
   />
   <link
     href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600"

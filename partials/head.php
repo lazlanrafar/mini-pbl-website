@@ -9,8 +9,8 @@
     Aplikasi Permintaan Pengukuran Tanah | Badan Pertanahan Nasional Batam
   </title>
 
-  <link rel="apple-touch-icon" href="../app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../app-assets/images/ico/favicon.ico">
+  <link rel="apple-touch-icon" href="../logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../logo.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
   <!-- BEGIN: Vendor CSS-->
