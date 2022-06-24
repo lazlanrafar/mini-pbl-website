@@ -24,6 +24,8 @@ function setPetugasPengukur($id) {
 	
 	// Notifikasi ke pemohon
 	$id_pengaju = mysqli_query($conn, "SELECT id_user FROM pengajuan_ukur_tanah WHERE id = $id");
+	$id_pengaju = mysqli_fetch_assoc($id_pengaju);
+	$id_pengaju = $id_pengaju["id_user"];
 	mysqli_query($conn, "INSERT INTO `notifikasi`(`id`, `id_user`, `pesan`) VALUES (NULL,'$id_pengaju','Menunggu Jadwal Pengukuran')");
 	
 	return mysqli_affected_rows($conn);

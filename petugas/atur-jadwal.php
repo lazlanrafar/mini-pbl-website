@@ -45,7 +45,7 @@ if( isset($_POST["submit"]) ) {
         <div class="content-header row"></div>
         <div class="content-body">
           <div class="row justify-content-center">
-            <div class="col-3">
+            <div class="col-5">
               <div class="card">
                 <div class="card-header">
                   <h4 class="card-title">Atur Jadwal</h4>
