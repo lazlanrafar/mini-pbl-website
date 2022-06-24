@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GetShayna by BuildWith Angga</title>
+    <title>Tanahku - Aplikasi Pembuatan Sertifikat Tanah</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -276,10 +276,10 @@
         <div class="row">
           <div class="col-lg-6 px-md-0 my-auto position-relative">
             <div class="headline">
-              Simplifying Global <span class="cl-light-blue">Finance</span>
+              Pembuatan Sertifikat <span class="cl-light-blue">Online</span>
             </div>
             <div class="sub-headline">
-              Faster, easier and cheaper cross border payment starts here
+              Cepat, Mudah dan hanya dengan satu klik
             </div>
             <div class="row four-point">
               <div class="col-md-6">
@@ -288,7 +288,7 @@
                   alt="vector"
                   class="me-3"
                 />
-                Licensed & Regulated
+                Terpercaya
               </div>
               <div class="col-md-6">
                 <img
@@ -296,7 +296,7 @@
                   alt="vector"
                   class="me-3"
                 />
-                Hassle-free
+                Mudah Digunakan
               </div>
               <div class="col-md-6">
                 <img
@@ -304,16 +304,9 @@
                   alt="vector"
                   class="me-3"
                 />
-                100% Transparent
+                Aman
               </div>
-              <div class="col-md-6">
-                <img
-                  src="https://api.elements.buildwithangga.com/storage/files/2/assets/Header/HeaderFinance-1/Vector.png"
-                  alt="vector"
-                  class="me-3"
-                />
-                Across 180+ Countries
-              </div>
+        
             </div>
           </div>
           <div class="col-lg-6 mt-5 mt-md-0"></div>
