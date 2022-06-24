@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav flex-row">
       <li class="nav-item mr-auto">
         <a class="navbar-brand" href="index.php">
-          <div class="brand-logo"></div>
+          <img src="../logo.png" width="40" alt="">
           <h2 class="brand-text mb-0">Tanahku</h2>
         </a>
       </li>

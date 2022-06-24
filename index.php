@@ -10,6 +10,7 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <link rel="shortcut icon" href="./logo.png" />
   </head>
   <body>
     <section class="abovefold overflow-hidden">
