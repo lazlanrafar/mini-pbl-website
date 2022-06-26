@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 04:49 AM
+-- Generation Time: Jun 26, 2022 at 05:16 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.14
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,17 +33,6 @@ CREATE TABLE `notifikasi` (
   `pesan` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `notifikasi`
---
-
-INSERT INTO `notifikasi` (`id`, `id_user`, `pesan`) VALUES
-(2, 9, 'Menunggu Jadwal Pengukuran'),
-(3, 5, 'Menunggu Hasil Ukur'),
-(4, 5, 'Menunggu Hasil Konfirmasi Dari Petugas Pemeriksa'),
-(5, 5, 'Menunggu Pembayaran'),
-(6, 5, 'Sertifikat Tanah anda telah kami terima. Silahkan download sertifikat anda.');
-
 -- --------------------------------------------------------
 
 --
@@ -63,14 +52,6 @@ CREATE TABLE `pengajuan_ukur_tanah` (
   `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pengajuan_ukur_tanah`
---
-
-INSERT INTO `pengajuan_ukur_tanah` (`id`, `id_user`, `shgb`, `imb`, `sppt_pbb`, `provinsi`, `kota`, `kecamatan`, `alamat_lengkap`, `status`) VALUES
-(2, 5, '62a1a7c0cc074.pdf', '62a1a7c0cc36e.pdf', '62a1a7c0cc60f.pdf', 'Kepulauan Riau', 'Batam Centre', 'Batam Centre', 'Perumahan Citra Batam', 'Selesai'),
-(13, 5, '62a69cbf6c45f.pdf', '62a69cbf6ccc7.pdf', '62a69cbf6cfd6.pdf', 'Kepulauan Riau', 'Tiban', 'Tiban Kampung', 'Rt6/2', 'Selesai');
-
 -- --------------------------------------------------------
 
 --
@@ -85,14 +66,6 @@ CREATE TABLE `sertifikat_tanah` (
   `sertifikat_tanah` varchar(30) DEFAULT NULL,
   `status` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sertifikat_tanah`
---
-
-INSERT INTO `sertifikat_tanah` (`id`, `id_pengajuan`, `biaya`, `bukti_pembayaran`, `sertifikat_tanah`, `status`) VALUES
-(1, 2, '500.000', '62a2b21988286.pdf', '62a2b31c5984d.pdf', 'Selesai'),
-(2, 13, '600.000', '62a6a4e070e52.pdf', '62a6a4f31397d.pdf', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -109,14 +82,6 @@ CREATE TABLE `ukuran_tanah` (
   `panjang_tanah` int(11) DEFAULT NULL,
   `dokumen_pl` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ukuran_tanah`
---
-
-INSERT INTO `ukuran_tanah` (`id`, `id_pengajuan`, `id_petugas`, `waktu_pengukuran`, `lebar_tanah`, `panjang_tanah`, `dokumen_pl`) VALUES
-(3, 2, 9, '2022-06-07', 100, 120, '62a2a9c076455.pdf'),
-(5, 13, 9, '2022-06-23', 50, 50, '62a6a26d4b0e3.pdf');
 
 -- --------------------------------------------------------
 
@@ -144,8 +109,15 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `role`, `nama`, `tempat_lahir`, `tanggal_lahir`, `no_ktp`, `email`, `password`, `telepon`, `alamat`) VALUES
 (5, 'user', 'user', 'user', '2022-06-09', '331212053010001', 'user@gmail.com', '$2y$10$7rTSXINRD3V.XEpnwhmyoOQf8y1JEG5eDAvYZsPIFkUZQ89Qlz5jK', '0856785612221', 'user'),
 (6, 'admin', 'admin', 'admin', '2022-06-09', '22456584563210', 'admin@gmail.com', '$2y$10$6xzssgOvYLDDAkDZPMxl2.DUm/q7PAL3BIA.sjV5U1zS4Lfxuwfl2', '085646663254', 'admin'),
-(8, 'petugas', 'petugas1', 'petugas1', '2022-06-09', '1111111111111111', 'petugas1@gmail.com', '$2y$10$d/0m4ksgoD3.HAE91jRPS.c1jU0vAAR8.YMDSENsgf.hXJQaYabXC', '111111111111', 'petugas1'),
-(9, 'petugas', 'petugas2', 'petugas2', '2022-06-03', '22222222222222222', 'petugas2@gmail.com', '$2y$10$1Saktq5C1pin9yMvuHwbyul7JMQM6tJtn47i76IG/GNJfQNYt0phK', '222222222222', 'petugas2');
+(10, 'petugas', 'Azlan', 'Tegal', '2003-02-04', '3525015201880002', 'azlan@gmail.com', '$2y$10$JU/DksOl9uH6k7IsdoRsUegacHZNzpg1bbmpKz/GHWAiFr89bUCH2', '081233537492', 'Citra Batam, Batam Center'),
+(11, 'petugas', 'Dicky', 'Batam', '2000-08-04', '3525010510930001', 'dicky@gmail.com', '$2y$10$vDvNo5GEavmcM/1zR0I7/OE.fz.p6/tAqf0hWt3Rx63//yKjaiiKe', '081364673820', 'Tiban Indah McDermott'),
+(12, 'petugas', 'Rido ', 'Batam', '2002-10-04', '3525016005650004', 'rido@gmail.com', '$2y$10$z5gFFr3udhBc4YzSRYXFJee8bq8XPbe/cFEDOY3NczNOpz1OMLwYy', '087779596460', 'Tiban Indah, Sekupang'),
+(13, 'petugas', 'Jessica', 'Batam', '2001-04-06', '3525015306780002', 'jess@gmail.com', '$2y$10$q/PGQXNwbaUQrCCI4utbtOY1.jEz2GcKVDCFuU9epoj1Liff1wg66', '086764611916', 'Bengkong indah atas'),
+(14, 'petugas', 'Metri', 'Batam', '2000-12-11', '3525016501830002', 'metri@gmail.com', '$2y$10$AAgDuiDqiEntkpcylKZOh.P3mFji.eVMrp3hpFtgpPsU36dg7Nn1i', '087996582426', 'Bengkong Palapa, Tanjung guntung'),
+(15, 'petugas', 'Manda', 'Batam', '2001-07-26', '3525011506830001', 'manda@gmail.com', '$2y$10$L.a4Bjij.KJf73iv.y9GleL1BRM/4.fHXy1Oiz9SuJ7nqflHAkejG', '085364987250', 'Batu Aji, tanjung uncang\r\n'),
+(16, 'petugas', 'Depri', 'Batam', '2000-04-05', '3525017006650078', 'depri@gmail.com', '$2y$10$6b0.yW1Lac3/FR1ne673weYgcs09tBnPZoyylalURDaQSxwN3bzde', '081365829185', 'Sekupang, Tiban koperasi'),
+(17, 'petugas', 'Tegar', 'Bengkulu', '2000-10-15', '3525017006620060', 'tegar@gmail.com', '$2y$10$fLxcGddCQrbW5XN3jIdbZe./WomH457mPuDSKJyXT.c16N3pRLTYe', '087996522845', 'Baloi, Tanjung Uma'),
+(18, 'petugas', 'Hilal', 'Batam', '2000-04-08', '3525017006950028', 'hilal@gmail.com', '$2y$10$Zs0IP/0vjtz1hsfddwVSPuaZzgT6Des6syF2Uke6Zq.8fkODUcyYG', '081365287942', 'Batu besar , Nongsa , Kampung Melayu');
 
 --
 -- Indexes for dumped tables
@@ -218,7 +190,7 @@ ALTER TABLE `ukuran_tanah`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
